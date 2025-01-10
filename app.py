@@ -3,15 +3,15 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=["GET"])
 def index():
     return render_template('index.html')
 
-@app.route('/camera1')
+@app.route('/camera1', methods=["GET"])
 def camera1():
-    return render_template('camera1.html')
+    return render_template('camera1.html',  methods=["GET"])
 
-@app.route('/camera2')
+@app.route('/camera2',  methods=["GET"])
 def camera2():
     return render_template('camera2.html')
 
