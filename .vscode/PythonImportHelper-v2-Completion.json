@@ -1,0 +1,62 @@
+[
+    {
+        "label": "X",
+        "importPath": "re",
+        "description": "re",
+        "isExtraImport": true,
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/camera1')\ndef camera1():\n    return render_template('camera1.html')\n@app.route('/camera2')\ndef camera2():\n    return render_template('camera2.html')\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "camera1",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def camera1():\n    return render_template('camera1.html')\n@app.route('/camera2')\ndef camera2():\n    return render_template('camera2.html')\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "camera2",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def camera2():\n    return render_template('camera2.html')\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\n@app.route('/')\ndef index():\n    return render_template('index.html')\n@app.route('/camera1')\ndef camera1():\n    return render_template('camera1.html')\n@app.route('/camera2')\ndef camera2():\n    return render_template('camera2.html')",
+        "detail": "app",
+        "documentation": {}
+    }
+]
