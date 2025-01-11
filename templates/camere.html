@@ -35,7 +35,8 @@
 </head>
 <body>
 
-  <a href="#" class="back-link" onclick="return confirmBack();">←</a>
+  <a href="#" class="back-link" onclick="window.location.href = '{{ url_for('index') }}#rooms'; return false;">←</a>
+
   
   <!-- Sezione Camera Terra -->
   <section id="room-terra" class="room-details">
@@ -412,8 +413,6 @@
         scrollToSection(1); // Seconda sezione
     });
 });
-
-
 </script>
 
 </body>

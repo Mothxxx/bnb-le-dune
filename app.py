@@ -1,6 +1,6 @@
 
-from flask import Flask, render_template, request, redirect
-
+from flask import Flask, render_template, request, redirect, send_from_directory
+import os
 app = Flask(__name__)
 
 
@@ -9,17 +9,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/camera1', methods=["GET"])
-def camera1():
-    return render_template('camera1.html',  methods=["GET"])
-
-@app.route('/camera2',  methods=["GET"])
-def camera2():
-    return render_template('camera2.html')
 
 @app.route('/camere',  methods=["GET"])
 def camere():
     return render_template('camere.html')
+
+@app.route('/robots.txt', methods=["GET"])
+def robots():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt', mimetype='text/plain')
+
 
 @app.route('/privacy_policy', methods=["GET"])
 def privacy_policy():

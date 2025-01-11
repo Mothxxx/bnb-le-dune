@@ -32,29 +32,28 @@
         "documentation": {}
     },
     {
+        "label": "send_from_directory",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
         "label": "index",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/camera1', methods=[\"GET\"])\ndef camera1():\n    return render_template('camera1.html',  methods=[\"GET\"])\n@app.route('/camera2',  methods=[\"GET\"])\ndef camera2():\n    return render_template('camera2.html')\n@app.route('/camere',  methods=[\"GET\"])\ndef camere():",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "camera1",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def camera1():\n    return render_template('camera1.html',  methods=[\"GET\"])\n@app.route('/camera2',  methods=[\"GET\"])\ndef camera2():\n    return render_template('camera2.html')\n@app.route('/camere',  methods=[\"GET\"])\ndef camere():\n    return render_template('camere.html')\n@app.route('/privacy_policy', methods=[\"GET\"])\ndef privacy_policy():",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "camera2",
-        "kind": 2,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "def camera2():\n    return render_template('camera2.html')\n@app.route('/camere',  methods=[\"GET\"])\ndef camere():\n    return render_template('camere.html')\n@app.route('/privacy_policy', methods=[\"GET\"])\ndef privacy_policy():\n    return render_template('privacy_policy.html')  # Assicurati che il file HTML sia salvato in templates/\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/camere',  methods=[\"GET\"])\ndef camere():\n    return render_template('camere.html')\n@app.route('/robots.txt', methods=[\"GET\"])\ndef robots():\n    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt', mimetype='text/plain')\n@app.route('/privacy_policy', methods=[\"GET\"])\ndef privacy_policy():",
         "detail": "app",
         "documentation": {}
     },
@@ -63,7 +62,16 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def camere():\n    return render_template('camere.html')\n@app.route('/privacy_policy', methods=[\"GET\"])\ndef privacy_policy():\n    return render_template('privacy_policy.html')  # Assicurati che il file HTML sia salvato in templates/\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "peekOfCode": "def camere():\n    return render_template('camere.html')\n@app.route('/robots.txt', methods=[\"GET\"])\ndef robots():\n    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt', mimetype='text/plain')\n@app.route('/privacy_policy', methods=[\"GET\"])\ndef privacy_policy():\n    return render_template('privacy_policy.html')  # Assicurati che il file HTML sia salvato in templates/\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "robots",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def robots():\n    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt', mimetype='text/plain')\n@app.route('/privacy_policy', methods=[\"GET\"])\ndef privacy_policy():\n    return render_template('privacy_policy.html')  # Assicurati che il file HTML sia salvato in templates/\nif __name__ == '__main__':\n    app.run(debug=True)",
         "detail": "app",
         "documentation": {}
     },
@@ -81,7 +89,7 @@
         "kind": 5,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "app = Flask(__name__)\n@app.route('/', methods=[\"GET\"])\ndef index():\n    return render_template('index.html')\n@app.route('/camera1', methods=[\"GET\"])\ndef camera1():\n    return render_template('camera1.html',  methods=[\"GET\"])\n@app.route('/camera2',  methods=[\"GET\"])\ndef camera2():\n    return render_template('camera2.html')",
+        "peekOfCode": "app = Flask(__name__)\n@app.route('/', methods=[\"GET\"])\ndef index():\n    return render_template('index.html')\n@app.route('/camere',  methods=[\"GET\"])\ndef camere():\n    return render_template('camere.html')\n@app.route('/robots.txt', methods=[\"GET\"])\ndef robots():\n    return send_from_directory(os.path.join(app.root_path, 'static'), 'robots.txt', mimetype='text/plain')",
         "detail": "app",
         "documentation": {}
     }

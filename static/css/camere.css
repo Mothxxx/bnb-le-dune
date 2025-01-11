@@ -37,7 +37,7 @@ body {
 }
 
 .back-link {
-    position: absolute;
+    position: fixed;
     top: 30px;
     left: 40px;
     color: rgb(100, 4, 124);
@@ -51,7 +51,7 @@ body {
     align-items: center;
     width: 30px;
     height: 30px;
-    z-index: 2;
+    z-index: 10;
     transition: all 0.3s ease;
 }
 
