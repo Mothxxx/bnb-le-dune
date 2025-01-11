@@ -7,18 +7,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Aileron&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
+section {
+    height: 100vh;
+    /* Ogni sezione occupa l'intera finestra */
+    scroll-snap-align: start;
+    /* Allineamento a inizio sezione */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    scroll-behavior: smooth;
+    /* Scrolling fluido */
+}
 
 /* Stili generali */
 body {
     font-family: Arial, sans-serif;
+    overflow: hidden;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
-    background: linear-gradient(155deg, #379fc5d1 0%, #21cd4cad 100%);
-    /* Gradient blu-viola */
+    flex-direction: column;
+    background: linear-gradient(155deg, #7f53afd1 0%, #25cafcd6 100%);
     background-size: cover;
-    display: flex;
     position: relative;
     justify-content: center;
     align-items: center;
@@ -28,29 +40,26 @@ body {
     position: absolute;
     top: 30px;
     left: 40px;
-    color: rgb(14, 116, 0);
+    color: rgb(100, 4, 124);
     padding: 2px 8px;
     border-radius: 20px;
     font-size: 30px;
     font-weight: bold;
     text-decoration: none;
-    z-index: 2;
-    /* Assicura che il link sia sopra l'overlay */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 30px;
-    /* Larghezza del cerchio */
     height: 30px;
+    z-index: 2;
     transition: all 0.3s ease;
 }
 
 .back-link:hover {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.463);
     transform: scale(1.1);
 }
 
-/* Aggiungi un overlay trasparente sopra l'immagine di sfondo */
 body::before {
     content: '';
     position: absolute;
@@ -59,9 +68,7 @@ body::before {
     right: 0;
     bottom: 0;
     background: rgba(101, 99, 99, 0.3);
-    /* Sovrapposizione semi-trasparente */
     pointer-events: none;
-    /* Assicura che l'overlay non interferisca con altri elementi */
     z-index: -1;
 }
 
@@ -70,12 +77,9 @@ h1 {
     text-align: center;
     font-family: 'Great Vibes', cursive;
     font-size: 4.5rem;
-    /* Puoi aumentare la dimensione del font se necessario */
     color: #ffffff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    /* Aggiunge un'ombra al testo per migliorarne la visibilità */
     z-index: 1;
-    /* Assicura che il testo sia sopra l'overlay */
 }
 
 p {
@@ -83,40 +87,57 @@ p {
     color: #ffffff;
     text-align: center;
     font-size: 1.2rem;
-    /* Puoi aumentare la dimensione del font se necessario */
 }
 
-/* Stili per la sezione dei dettagli della camera */
 .room-details {
     min-height: 100vh;
-    width: 100%;
-    height: 100%;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centra il contenuto verticalmente */
     padding: 20px;
+    /* Aggiungi padding, se necessario */
+    box-sizing: border-box;
+}
+
+/* Separazione delle camere */
+.room {
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 30px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Aggiungere uno spazio tra le camere */
+#room-terra,
+#room-aria {
+    width: 100%;
+    max-width: 1200px;
+    /* Limita la larghezza massima per mantenere un layout più ordinato */
+    margin: 20px auto;
 }
 
 .gallery {
     margin-top: 50px;
     margin-bottom: 20px;
+    width: 100%;
     text-align: center;
     position: relative;
 }
 
-/* Contenitore con dimensioni fisse per le immagini */
 .img-container {
     width: 800px;
-    /* Larghezza fissa */
     height: 550px;
-    /* Altezza fissa */
     margin: 0 auto;
     border-radius: 15px;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* Nasconde la parte eccedente dell'immagine */
 }
 
-/* Rimuovi i margini bianchi nella finestra modale di Lightbox */
 .lightbox {
     display: block;
     position: fixed;
@@ -125,139 +146,150 @@ p {
     left: 0;
     background: transparent;
     transition: all 1s;
-
 }
 
 .lightbox .lb-image {
     border-radius: 15px;
-    /* Aggiungi bordi arrotondati alle immagini nella finestra modale */
-
 }
 
 .lb-image {
     margin: 0 !important;
-    /* Rimuove i margini dell'immagine */
     border: none !important;
-    /* Rimuove eventuali bordi */
     box-shadow: none !important;
-    /* Rimuove le ombre */
 }
 
 .img-fluid {
     width: 100%;
-    height: 100%;
+    height: auto;
     border-radius: 20px;
     object-fit: cover;
-    border-radius: 20px;
-    /* Bordo arrotondato */
     justify-content: center;
 }
 
-/* Stili per le miniature */
-#sliderSyncingThumb {
+#sliderSyncingThumb1 {
     display: flex;
     justify-content: center;
     gap: 2px;
+    flex-wrap: wrap;
 }
 
-#sliderSyncingThumb .js-slide {
+#sliderSyncingThumb1 .js-slide {
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
 }
 
-#sliderSyncingThumb .img-fluid {
+#sliderSyncingThumb1 .img-fluid {
     width: 200px;
     height: 110px;
     object-fit: cover;
     border-radius: 10px;
     margin: 0 auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    /* Aggiungi un'ombra per migliorare la visibilità dei bordi arrotondati */
 }
 
-#sliderSyncingThumb .slick-slide {
-    padding: 0;
-    width: 150px;
-
+#sliderSyncingThumb1 .slick-slide {
+    display: flex;
     justify-content: center;
+    padding: 0;
+    width: auto;
+    /* Rimuovi il width fisso */
 }
 
-/* Ingrandisce la miniatura attiva */
-#sliderSyncingThumb .slick-slide.slick-current img {
+#sliderSyncingThumb1 .slick-slide.slick-current img {
     transform: scale(1.2);
-    /* Puoi aumentare il valore per ingrandirla ulteriormente */
     transition: transform 0.3 ease-in-out;
-    /* Aggiunge un effetto di transizione */
 }
 
-/* Miniature ingrandite al passaggio del mouse */
-#sliderSyncingThumb .slick-slide img:hover {
+#sliderSyncingThumb1 .slick-slide img:hover {
     transform: scale(1.2);
-    /* Aumenta la dimensione al passaggio del mouse */
     transition: transform 0.3s ease-in-out;
 }
 
-#sliderSyncingThumb .slick-slide img {
-    width: 70% !important;
-
+#sliderSyncingThumb1 .slick-slide img {
+    width: 80% !important;
 }
 
-/* Impostazioni per il carosello */
-#sliderSyncingNav {
+#sliderSyncingNav1 {
     width: 80%;
-    /* Puoi regolare questa larghezza per controllare la larghezza complessiva */
     margin: 0 auto;
-    /* Centra il carosello */
 }
 
-/* Rimuove il testo predefinito e mantiene le frecce */
+/* Second Slider */
+#sliderSyncingThumb2 {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    flex-wrap: wrap;
+}
+
+#sliderSyncingThumb2 .js-slide {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#sliderSyncingThumb2 .img-fluid {
+    width: 200px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#sliderSyncingThumb2 .slick-slide {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    width: auto;
+}
+
+#sliderSyncingThumb2 .slick-slide.slick-current img {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+#sliderSyncingThumb2 .slick-slide img:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+#sliderSyncingThumb2 .slick-slide img {
+    width: 80% !important;
+}
+
+#sliderSyncingNav2 {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .slick-prev:before,
 .slick-next:before {
     content: '';
-    /* Rimuove il testo di default */
     font-size: 45px;
-    /* Colore e dimensione della freccia */
     font-weight: bold;
-    color: rgb(3, 111, 121);
-    /* Colore della freccia */
+    color: rgb(41, 15, 159);
     display: inline-block;
-    /* Garantisce il posizionamento */
     transition: transform 0.3s ease-in-out, color 0.3s ease;
 }
 
-/* Effetto hover per i pulsanti di navigazione */
 .slick-prev:hover:before,
 .slick-next:hover:before {
     transform: scale(1.1);
-    /* Ingrandisce il pulsante durante l'hover */
     transition: all 0.3s ease-in-out, background-color 0.3s ease, box-shadow 0.3s ease;
-    /* Transizioni fluide */
 }
 
-/* Freccia sinistra */
 .slick-prev:before {
     content: '←';
-    /* Freccia sinistra */
 }
 
-/* Freccia destra */
 .slick-next:before {
     content: '→';
-    /* Freccia destra */
 }
 
-/* Posizione delle frecce nei siti con RTL */
-[dir='rtl'] .slick-prev {
-    right: -25px;
-    left: auto;
-}
-
-[dir='rtl'] .slick-next {
-    right: auto;
-    left: -25px;
-}
 
 .room-comforts h3 {
     margin-top: 5px;
@@ -281,5 +313,4 @@ p {
     margin-bottom: 10px;
     font-weight: 300;
     text-align: center;
-
 }

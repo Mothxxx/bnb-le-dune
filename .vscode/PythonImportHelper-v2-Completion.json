@@ -1,13 +1,5 @@
 [
     {
-        "label": "X",
-        "importPath": "re",
-        "description": "re",
-        "isExtraImport": true,
-        "detail": "re",
-        "documentation": {}
-    },
-    {
         "label": "Flask",
         "importPath": "flask",
         "description": "flask",
@@ -24,11 +16,27 @@
         "documentation": {}
     },
     {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
         "label": "index",
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/camera1', methods=[\"GET\"])\ndef camera1():\n    return render_template('camera1.html',  methods=[\"GET\"])\n@app.route('/camera2',  methods=[\"GET\"])\ndef camera2():\n    return render_template('camera2.html')\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "peekOfCode": "def index():\n    return render_template('index.html')\n@app.route('/camera1', methods=[\"GET\"])\ndef camera1():\n    return render_template('camera1.html',  methods=[\"GET\"])\n@app.route('/camera2',  methods=[\"GET\"])\ndef camera2():\n    return render_template('camera2.html')\n@app.route('/camere',  methods=[\"GET\"])\ndef camere():",
         "detail": "app",
         "documentation": {}
     },
@@ -37,7 +45,7 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def camera1():\n    return render_template('camera1.html',  methods=[\"GET\"])\n@app.route('/camera2',  methods=[\"GET\"])\ndef camera2():\n    return render_template('camera2.html')\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "peekOfCode": "def camera1():\n    return render_template('camera1.html',  methods=[\"GET\"])\n@app.route('/camera2',  methods=[\"GET\"])\ndef camera2():\n    return render_template('camera2.html')\n@app.route('/camere',  methods=[\"GET\"])\ndef camere():\n    return render_template('camere.html')\n@app.route('/privacy_policy', methods=[\"GET\"])\ndef privacy_policy():",
         "detail": "app",
         "documentation": {}
     },
@@ -46,7 +54,25 @@
         "kind": 2,
         "importPath": "app",
         "description": "app",
-        "peekOfCode": "def camera2():\n    return render_template('camera2.html')\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "peekOfCode": "def camera2():\n    return render_template('camera2.html')\n@app.route('/camere',  methods=[\"GET\"])\ndef camere():\n    return render_template('camere.html')\n@app.route('/privacy_policy', methods=[\"GET\"])\ndef privacy_policy():\n    return render_template('privacy_policy.html')  # Assicurati che il file HTML sia salvato in templates/\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "camere",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def camere():\n    return render_template('camere.html')\n@app.route('/privacy_policy', methods=[\"GET\"])\ndef privacy_policy():\n    return render_template('privacy_policy.html')  # Assicurati che il file HTML sia salvato in templates/\nif __name__ == '__main__':\n    app.run(debug=True)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "privacy_policy",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def privacy_policy():\n    return render_template('privacy_policy.html')  # Assicurati che il file HTML sia salvato in templates/\nif __name__ == '__main__':\n    app.run(debug=True)",
         "detail": "app",
         "documentation": {}
     },

@@ -10,16 +10,22 @@
 
 /* Imposta una transizione per ogni sezione */
 section {
-    height: 100vh;  /* Ogni sezione occupa l'intera altezza della finestra */
-    overflow: hidden; /* Evita che la pagina scorra all'interno della sezione */
+    height: 100vh;
+    /* Ogni sezione occupa l'intera altezza della finestra */
+    overflow: hidden;
+    /* Evita che la pagina scorra all'interno della sezione */
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-    height: 100%; /* Assicura che il corpo occupi l'intera altezza */
-    overflow: auto;  /* Nasconde la scrollbar */
-    scroll-snap-type: y mandatory; /* Impostato per lo scroll verticale */
+    height: 100%;
+    /* Assicura che il corpo occupi l'intera altezza */
+    overflow: auto;
+    /* Nasconde la scrollbar */
+    scroll-snap-type: y mandatory;
+    /* Impostato per lo scroll verticale */
     scroll-padding-top: 0;
 }
 
@@ -30,15 +36,20 @@ body {
     padding: 0;
     line-height: 1.6;
     overflow-x: hidden;
-    scroll-snap-type: y mandatory;  /* Imposta lo snap verticale */
-    scroll-padding-top: 0; 
+    scroll-snap-type: y mandatory;
+    /* Imposta lo snap verticale */
+    scroll-padding-top: 0;
     overflow-y: scroll;
 }
 
-.cover, .rooms {
-    height: 100vh;  /* Ogni sezione occupa l'intero schermo */
-    scroll-snap-align: start;  /* Allinea ogni sezione all'inizio dello schermo */
-    padding: 20px;  /* Aggiungi padding se desideri */
+.cover,
+.rooms {
+    height: 100vh;
+    /* Ogni sezione occupa l'intero schermo */
+    scroll-snap-align: start;
+    /* Allinea ogni sezione all'inizio dello schermo */
+    padding: 20px;
+    /* Aggiungi padding se desideri */
 }
 
 /* HEADER */
@@ -56,10 +67,12 @@ header {
 
 header h1 {
     margin-top: -20px;
-    font-size: 5rem; /* Titolo grande */
+    font-size: 5rem;
+    /* Titolo grande */
     margin: 0;
     font-weight: 500;
-    font-family: 'Montserrat', sans-serif; /* Font geometrico per il titolo */
+    font-family: 'Montserrat', sans-serif;
+    /* Font geometrico per il titolo */
     letter-spacing: 2px;
     color: #000;
 }
@@ -93,7 +106,8 @@ header h2.soggiorno-relax {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 10%; /* Altezza della sfumatura */
+    height: 10%;
+    /* Altezza della sfumatura */
     background: linear-gradient(to bottom, rgba(173, 216, 230, 0) 0%, rgba(173, 216, 230, 1) 100%);
     z-index: 2;
 }
@@ -104,13 +118,14 @@ header h2.soggiorno-relax {
 }
 
 .cover h2 {
-    font-family: 'Great Vibes', cursive; /* Cambia il font */
-    font-weight: italic; 
+    font-family: 'Great Vibes', cursive;
+    /* Cambia il font */
+    font-weight: italic;
     font-weight: 400;
     font-size: 3rem;
     margin: 0;
     padding-bottom: 0;
-    color: #000; 
+    color: #000;
     letter-spacing: 1px;
 }
 
@@ -119,18 +134,23 @@ header h2.soggiorno-relax {
     position: absolute;
     top: 75%;
     left: 45%;
-    transform: translate(-50%, -50%); /* Centro esatto rispetto alla cover */
-    width: 80%; /* Imposta la larghezza della sezione */
-    text-align: left; /* Allineamento del testo a sinistra */
-    padding: 0; /* Rimuove il padding */
+    transform: translate(-50%, -50%);
+    /* Centro esatto rispetto alla cover */
+    width: 80%;
+    /* Imposta la larghezza della sezione */
+    text-align: left;
+    /* Allineamento del testo a sinistra */
+    padding: 0;
+    /* Rimuove il padding */
 }
 
 .contact-info p {
     font-size: 1.4rem;
     margin-bottom: 10px;
     line-height: 0.7;
-    font-family: 'Roboto', sans-serif; /* Font più moderno */
-    color: #333; 
+    font-family: 'Roboto', sans-serif;
+    /* Font più moderno */
+    color: #333;
     font-weight: 300;
 }
 
@@ -144,26 +164,32 @@ header h2.soggiorno-relax {
 
 .contact-info a:hover {
     text-decoration: none;
-    color: #0d6780; 
+    color: #0d6780;
 }
 
 /* Distanziamento della mappa dal testo "La nostra posizione" */
 .contact-info p:last-of-type {
-    margin-bottom: 30px;  /* Aumenta il margine per distanziare la mappa */
+    margin-bottom: 30px;
+    /* Aumenta il margine per distanziare la mappa */
 }
 
 /* MAPPA */
 .map {
-    width: 15%; /* Quadrato molto piccolo */
-    height: 40%; 
+    width: 15%;
+    /* Quadrato molto piccolo */
+    height: 40%;
     overflow: hidden;
-    margin-top: 20px; /* Distanza sopra la mappa */
+    margin-top: 20px;
+    /* Distanza sopra la mappa */
 }
 
 .map iframe {
-    width: 80%; /* Occupa il 100% della larghezza disponibile */
-    height: 140%; /* Occupa il 100% dell'altezza disponibile */
-    border: 0; /* Rimuove il bordo dell'iframe */
+    width: 80%;
+    /* Occupa il 100% della larghezza disponibile */
+    height: 140%;
+    /* Occupa il 100% dell'altezza disponibile */
+    border: 0;
+    /* Rimuove il bordo dell'iframe */
     border-radius: 10px;
     margin: 0 auto;
 }
@@ -171,8 +197,9 @@ header h2.soggiorno-relax {
 .address {
     font-size: 1.3rem;
     margin-top: -10px;
-    font-family: 'Roboto', sans-serif; /* Font più moderno */
-    color: #333; 
+    font-family: 'Roboto', sans-serif;
+    /* Font più moderno */
+    color: #333;
     font-weight: 400;
 }
 
@@ -183,24 +210,37 @@ html {
 /* Stili per il link di ancoraggio */
 .scroll-to-rooms {
     position: absolute;
-    bottom: 100px; /* Distanza dal fondo della sezione */
-    transform: translateX(-50%); /* Centra perfettamente il link */
-    background-color: #108c9a9a; /* Colore principale del bottone */
-    color:  #ffffffcd; /* Colore del testo */
-    font-family: 'Montserrat', sans-serif; /* Font elegante */
-    font-size: 1.6rem; /* Dimensione del testo */
-    padding: 15px 20px; /* Spazio interno per rendere il bottone largo */
-    text-decoration: none; /* Rimuove la sottolineatura */
-    border-radius: 30px; /* Bordi arrotondati per un effetto più morbido */
-    display: inline-block; /* Mantiene il bottone inline */
-    text-align: center; /* Allinea il testo al centro */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Aggiunge un'ombra morbida */
-    transition: all 0.3s ease; 
+    bottom: 100px;
+    /* Distanza dal fondo della sezione */
+    transform: translateX(-50%);
+    /* Centra perfettamente il link */
+    background-color: #108c9a9a;
+    /* Colore principale del bottone */
+    color: #ffffffcd;
+    /* Colore del testo */
+    font-family: 'Montserrat', sans-serif;
+    /* Font elegante */
+    font-size: 1.6rem;
+    /* Dimensione del testo */
+    padding: 15px 20px;
+    /* Spazio interno per rendere il bottone largo */
+    text-decoration: none;
+    /* Rimuove la sottolineatura */
+    border-radius: 30px;
+    /* Bordi arrotondati per un effetto più morbido */
+    display: inline-block;
+    /* Mantiene il bottone inline */
+    text-align: center;
+    /* Allinea il testo al centro */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Aggiunge un'ombra morbida */
+    transition: all 0.3s ease;
     animation: moveDown 1.5s ease-in-out infinite;
 }
 
 .scroll-to-rooms:hover {
-    background-color: #9f4023a9; /* Cambia il colore di sfondo al passaggio del mouse */
+    background-color: #9f4023a9;
+    /* Cambia il colore di sfondo al passaggio del mouse */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
@@ -208,45 +248,62 @@ html {
 .scroll-to-rooms .arrow {
     color: #108c9a9a;
     display: block;
-    font-size: 3rem; /* Dimensione della freccia */
+    font-size: 3rem;
+    /* Dimensione della freccia */
     position: absolute;
-    top: -65px; /* La freccia esce sopra il bottone */
-    left: 50%; /* Centra la freccia orizzontalmente */
-    transform: translateX(-50%); 
-    animation: bounce 1.5s infinite; /* Animazione che fa rimbalzare la freccia */
+    top: -65px;
+    /* La freccia esce sopra il bottone */
+    left: 50%;
+    /* Centra la freccia orizzontalmente */
+    transform: translateX(-50%);
+    animation: bounce 1.5s infinite;
+    /* Animazione che fa rimbalzare la freccia */
 }
 
 
 /* Animazione di movimento verso il basso sia per il bottone che per la freccia */
 @keyframes moveDown {
     0% {
-        transform: translateY(-10px); /* Inizia leggermente in alto */
+        transform: translateY(-10px);
+        /* Inizia leggermente in alto */
     }
+
     50% {
-        transform: translateY(10px); /* Si sposta verso il basso */
+        transform: translateY(10px);
+        /* Si sposta verso il basso */
     }
+
     100% {
-        transform: translateY(-10px); /* Torna sopra per continuare l'animazione */
+        transform: translateY(-10px);
+        /* Torna sopra per continuare l'animazione */
     }
 }
 
 /* Aggiungere il corretto comportamento per il link di ancoraggio */
 .scroll-to-rooms:active {
-    transform: translateY(5px); /* Piccola animazione al clic */
+    transform: translateY(5px);
+    /* Piccola animazione al clic */
 }
 
 /* SEZIONE CAMERE */
 .rooms {
-    height: 100vh; /* Altezza totale della viewport */
-    display: flex; /* Abilita Flexbox */
-    justify-content: center; /* Centra verticalmente i contenuti */
-    align-items: center; /* Centra orizzontalmente i contenuti */
-   
-    background-size: cover; /* Assicurati che lo sfondo copra l'intera area */
+    height: 100vh;
+    /* Altezza totale della viewport */
+    display: flex;
+    /* Abilita Flexbox */
+    justify-content: center;
+    /* Centra verticalmente i contenuti */
+    align-items: center;
+    /* Centra orizzontalmente i contenuti */
+
+    background-size: cover;
+    /* Assicurati che lo sfondo copra l'intera area */
     background-position: center;
-    font-family: 'Roboto', sans-serif; /* Font principale */
+    font-family: 'Roboto', sans-serif;
+    /* Font principale */
     text-align: center;
-    padding: 30px; /* Spaziatura interna */
+    padding: 30px;
+    /* Spaziatura interna */
     position: relative;
     z-index: 0;
     scroll-snap-align: start;
@@ -258,29 +315,35 @@ html {
     top: 0;
     left: 0;
     width: 100%;
-    height: 10%; /* Altezza della sfumatura */
+    height: 10%;
+    /* Altezza della sfumatura */
     background: linear-gradient(to top, rgba(173, 216, 230, 0) 0%, rgba(173, 216, 230, 1) 100%);
     z-index: 1;
 }
 
 .rooms-container {
     display: flex;
-    flex-direction: row; /* Dispone gli elementi orizzontalmente */
+    flex-direction: row;
+    /* Dispone gli elementi orizzontalmente */
     justify-content: space-between;
-    gap: 30px; 
+    gap: 30px;
     width: 70%;
     transform: translateY(100px);
-    padding: 40px; /* Aumenta il padding per distanziare le foto dai titoli */
+    padding: 40px;
+    /* Aumenta il padding per distanziare le foto dai titoli */
 }
+
 .room img {
     max-width: 100%;
     height: auto;
 }
 
 .room {
-   
-    transition: transform 0.3s ease-in-out; /* Effetto al passaggio del mouse */
-    position: relative; /* Permette il posizionamento assoluto di room-info dentro ciascuna room */
+
+    transition: transform 0.3s ease-in-out;
+    /* Effetto al passaggio del mouse */
+    position: relative;
+    /* Permette il posizionamento assoluto di room-info dentro ciascuna room */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -288,54 +351,74 @@ html {
 }
 
 .room:hover {
-    transform: translateY(-5px); /* Effetto hover che solleva il box */
+    transform: translateY(-5px);
+    /* Effetto hover che solleva il box */
 }
 
 /* Contenitore immagine */
 .image-container {
-    width: 100%; /* Occupa il 90% della larghezza del box */
-    height: 80%; /* Altezza dinamica per mantenere coerenza */
-    
+    width: 100%;
+    /* Occupa il 90% della larghezza del box */
+    height: 80%;
+    /* Altezza dinamica per mantenere coerenza */
+
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Nasconde eventuali parti eccedenti */
+    overflow: hidden;
+    /* Nasconde eventuali parti eccedenti */
     margin-bottom: 5px;
-    position: relative; /* Per posizionamento interno */
-    border-radius: 15px; /* Arrotonda i bordi */
-    box-shadow: 0 7px 16px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1); /* Ombra */
+    position: relative;
+    /* Per posizionamento interno */
+    border-radius: 15px;
+    /* Arrotonda i bordi */
+    box-shadow: 0 7px 16px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1);
+    /* Ombra */
 }
 
 .image-container img {
-    width: 100%; /* L'immagine occupa tutta la larghezza del contenitore */
-    height: 100%; /* Mantiene le proporzioni dell'immagine */
-    object-fit: cover; /* L'immagine viene adattata al contenitore senza tagli */
-    max-height: 100%; /* Impedisce che l'immagine ecceda l'altezza */
-    position: relative; /* Mantiene l'immagine all'interno del contenitore */
-    border-radius: 15px; 
+    width: 100%;
+    /* L'immagine occupa tutta la larghezza del contenitore */
+    height: 100%;
+    /* Mantiene le proporzioni dell'immagine */
+    object-fit: cover;
+    /* L'immagine viene adattata al contenitore senza tagli */
+    max-height: 100%;
+    /* Impedisce che l'immagine ecceda l'altezza */
+    position: relative;
+    /* Mantiene l'immagine all'interno del contenitore */
+    border-radius: 15px;
 }
 
 /* Testo sotto l'immagine */
 .room-info {
-    margin-top: 40px; /* Aumenta il margine superiore per distanziare le foto dai titoli */
+    margin-top: 40px;
+    /* Aumenta il margine superiore per distanziare le foto dai titoli */
     text-align: center;
-    width: 80%; /* Aggiusta la larghezza per evitare che il testo tocchi i bordi */
+    width: 80%;
+    /* Aggiusta la larghezza per evitare che il testo tocchi i bordi */
 }
 
 /* Titolo della camera */
 .room h3 {
     margin-top: 20px;
-    font-size: 6rem; /* Più grande per un effetto più prominente */
-    color: #ffffff; /* Colore scuro per il testo */
+    font-size: 6rem;
+    /* Più grande per un effetto più prominente */
+    color: #ffffff;
+    /* Colore scuro per il testo */
     letter-spacing: 1px;
-    font-family: 'Great Vibes', serif; /* Font più moderno */
+    font-family: 'Great Vibes', serif;
+    /* Font più moderno */
     margin-bottom: 0;
 }
 
 /* Descrizione della camera */
 .room p {
-    font-size: 1.6rem; /* Dimensione leggera e leggibile */
-    color: #ffffff; /* Colore grigio per il testo secondario */
-    font-family: 'Arial', sans-serif; /* Font più elegante */
+    font-size: 1.6rem;
+    /* Dimensione leggera e leggibile */
+    color: #ffffff;
+    /* Colore grigio per il testo secondario */
+    font-family: 'Arial', sans-serif;
+    /* Font più elegante */
     margin-top: 0;
 }
 
@@ -345,11 +428,19 @@ html {
     transition: opacity 1s ease, transform 1s ease;
 }
 
-/* FOOTER */
-footer {
-    width: 100%; /* Larghezza completa */
-    color: #000000; /* Testo bianco */
-    text-align: left; /* Centra il testo */
-    font-size: 1.2rem; /* Dimensione del testo */
+#fixed-footer {
+    width: 100%;
+    /* Larghezza completa del footer */
+    background-color: #333;
+    /* Colore di sfondo */
+    color: white;
+    /* Colore del testo */
+    text-align: center;
+    /* Centra il contenuto */
+    padding: 4px 0;
+    /* Spaziatura interna */
+    position: absolute;
+    /* Posizionato all'interno della sezione */
+    bottom: 0;
+    /* Fissato in basso */
 }
-

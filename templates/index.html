@@ -51,7 +51,7 @@
     <!-- SEZIONE CAMERE -->
     <section id="rooms" class="rooms" style="background-image: url('{{ url_for('static', filename='images/general/costa1.jpg') }}');">
         <div class="rooms-container show-on-scroll">
-            <div class="room" onclick="window.location.href='{{url_for ('camera1')}}#room-terra'">
+            <div class="room" onclick="window.location.href='{{url_for ('camere')}}#room-terra'">
                 <div class="image-container">
                     <img src="{{ url_for('static', filename='images/general/fuori.jpg') }}" alt="Terra">
                 </div>
@@ -59,7 +59,7 @@
                     <h3>Residence Terra</h3>
                 </div>
             </div>
-            <div class="room" onclick="window.location.href='{{url_for('camera2')}}#room-aria'">
+            <div class="room" onclick="window.location.href='{{url_for('camere')}}#room-aria'">
                 <div class="image-container">
                     <img src="{{ url_for('static', filename='images/general/45A14D27-1E71-4DF3-A5B7-B2AB660DFCC9_1_105_c.jpeg') }}" alt="Aria">
                 </div>
@@ -68,11 +68,15 @@
                 </div>
             </div>
         </div>
+        
+        <footer id="fixed-footer">
+
+                <p>&copy; 2025 Residence Le Dune. <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></p>
+                
+       </footer>
     </section>
 
     <!-- FOOTER -->
-    <footer>
-       <p>&copy; 2024 Le Dune Residence. Tutti i diritti riservati.</p>
-   </footer>
 </body>
 </html>
+
