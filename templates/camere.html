@@ -2,7 +2,6 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Info Camere</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   
@@ -11,6 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> 
   <link rel="stylesheet" href="{{ url_for('static', filename='css/camere.css') }}">
   
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Lightbox CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
   
@@ -300,55 +300,67 @@
           {
             breakpoint: 768,
             settings: {
-              slidesToShow: 1
+              slidesToShow: 5,
+              slidesToScroll: 5,
+              centerMode: false,  // Disabilita la modalità centrata
+              focusOnSelect: false
             }
           },
           {
-            breakpoint: 554,
+            breakpoint: 480,
             settings: {
-              slidesToShow: 1
+              slidesToShow: 5,
+              slidesToScroll: 5,
+              centerMode: false,  // Disabilita la modalità centrata
+              focusOnSelect: false
             }
           }
         ]
       });
-    });
-    // Second slider set
-    $('#sliderSyncingNav2').slick({
-      infinite: true,
-      arrows: true,
-      fade: true,
-      asNavFor: '#sliderSyncingThumb2',
-    });
-    $('#sliderSyncingThumb2').slick({
-      infinite: false,
-      slidesToShow: 8,
-      slidesToScroll: 8,
-      asNavFor: '#sliderSyncingNav2',
-      focusOnSelect: true,
-      arrows: false,
-      centerMode: false,
-      draggable: true,
-      swipe: false,
-      responsive: [
-        {
-          breakpoint: 992,
-          settings: {
-            slidesToShow: 2
-          }
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 1
-          }
-        },
-        {
-          breakpoint: 554,
-          settings: {
-            slidesToShow: 1
-          }
-        }
-      ]
+      // Second slider set
+      $('#sliderSyncingNav2').slick({
+          infinite: true,
+          arrows: true,
+          fade: true,
+          asNavFor: '#sliderSyncingThumb2',
+        });
+        $('#sliderSyncingThumb2').slick({
+            infinite: false,
+            slidesToShow: 8,
+            slidesToScroll: 8,
+            asNavFor: '#sliderSyncingNav2',
+            focusOnSelect: true,
+            arrows: false,
+            centerMode: false,
+            draggable: true,
+            swipe: false,
+            responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 8,
+                    slidesToScroll: 8,
+                    centerMode: false,  // Disabilita la modalità centrata
+                    focusOnSelect: false
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 8,
+                    slidesToScroll: 8,
+                    centerMode: false,  // Disabilita la modalità centrata
+                    focusOnSelect: false
+                }
+            }
+            ]
+        });
     });
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -364,43 +376,43 @@
             sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
 
             // Sblocca lo scroll dopo l'animazione
-            setTimeout(() => isScrolling = false, 1000);
+            setTimeout(() => isScrolling = false, 500);
         }
     }
 
     // Trova la sezione attualmente visibile
     function getCurrentSectionIndex() {
-        const viewportHeight = window.innerHeight;
-        for (let i = 0; i < sections.length; i++) {
-            const rect = sections[i].getBoundingClientRect();
-            if (rect.top >= 0 && rect.top < viewportHeight) {
-                return i;
-            }
+    const viewportHeight = window.innerHeight;
+    for (let i = 0; i < sections.length; i++) {
+        const rect = sections[i].getBoundingClientRect();
+        console.log('Sezione ' + i, rect.top);  // Aggiungi un log per verificare le posizioni
+        if (rect.top >= 0 && rect.top < viewportHeight) {
+            return i;
         }
-        return -1; // Nessuna sezione trovata
     }
+    return -1; // Nessuna sezione trovata
+}
 
     // Listener per l'evento `wheel` (rotellina + trackpad)
-    document.addEventListener('wheel', function (event) {
-        if (isScrolling) return; // Blocca lo scroll multiplo
+   document.addEventListener('wheel', function (event) {
+    if (isScrolling) return;
 
-        // Rileva la direzione dello scroll
-        const delta = Math.sign(event.deltaY);
+    const delta = Math.sign(event.deltaY);  // Calcola la direzione (positivo per scroll giù, negativo per scroll su)
 
-        // Ignora scroll troppo piccoli (movimenti quasi impercettibili sul trackpad)
-        if (Math.abs(event.deltaY) < 10) return;
+    // Log per verificare il valore di deltaY
+    console.log('deltaY:', event.deltaY, 'direzione:', delta);
 
-        const currentIndex = getCurrentSectionIndex();
-        if (currentIndex === -1) return; // Nessuna sezione attiva trovata
+    if (Math.abs(event.deltaY) < 10) return;
 
-        if (delta > 0 && currentIndex < sections.length - 1) {
-            // Scroll verso il basso
-            scrollToSection(currentIndex + 1);
-        } else if (delta < 0 && currentIndex > 0) {
-            // Scroll verso l'alto
-            scrollToSection(currentIndex - 1);
-        }
-    });
+    const currentIndex = getCurrentSectionIndex();
+    if (currentIndex === -1) return;
+
+    if (delta > 0 && currentIndex < sections.length - 1) {
+        scrollToSection(currentIndex + 1);  // Scorri verso il basso
+    } else if (delta < 0 && currentIndex > 0) {
+        scrollToSection(currentIndex - 1);  // Scorri verso l'alto
+    }
+});
 
     // Pulsanti di navigazione (opzionali)
     document.querySelector('.scroll-to-room-terra').addEventListener('click', function (e) {

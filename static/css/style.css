@@ -444,3 +444,251 @@ html {
     bottom: 0;
     /* Fissato in basso */
 }
+
+
+/* Media Query for Tablets */
+@media (max-width: 768px) {
+    header {
+        font-size: 18px;
+    }
+
+    .container {
+        padding: 10px;
+    }
+
+    /* Adjusting layout for mobile screens */
+    .content {
+        display: block;
+        padding: 10px;
+    }
+}
+
+/* Impostazioni generali per dispositivi mobili */
+@media (max-width: 768px) {
+    body {
+        font-size: 1rem;
+        /* Riduce la dimensione del font per dispositivi più piccoli */
+    }
+
+    header h1 {
+        font-size: 3rem;
+        /* Riduce la dimensione del titolo */
+    }
+
+    header h2.soggiorno-relax {
+        font-size: 2rem;
+        /* Riduce il titolo della sezione "Soggiorno Relax" */
+    }
+
+    .cover h2 {
+        font-size: 2.5rem;
+        /* Riduce la dimensione del testo nella cover */
+    }
+
+    .contact-info p {
+        font-size: 1.2rem;
+        /* Riduce la dimensione del testo nei contatti */
+    }
+
+    .contact-info a {
+        font-size: 1.3rem;
+        /* Riduce la dimensione del link */
+    }
+
+    .contact-info p:last-of-type {
+        margin-bottom: 15px;
+        /* Riduce il margine sotto l'ultimo paragrafo */
+    }
+
+    .map {
+        width: 50%;
+        /* Aumenta la larghezza della mappa su schermi più piccoli */
+        height: 50%;
+        /* Riduce l'altezza della mappa */
+    }
+
+    .rooms-container {
+        flex-direction: column;
+        /* Dispone le camere in colonna su schermi più piccoli */
+        width: 90%;
+        /* Riduce la larghezza per evitare che le immagini tocchino i bordi */
+        gap: 20px;
+        /* Riduce lo spazio tra le camere */
+    }
+
+    .room img {
+        max-width: 100%;
+        /* Assicura che le immagini non escono dal contenitore */
+    }
+
+    .room-info {
+        margin-top: 20px;
+        /* Riduce il margine sopra il testo delle camere */
+        font-size: 1rem;
+        /* Riduce la dimensione del testo */
+    }
+
+    .scroll-to-rooms {
+        font-size: 1.4rem;
+        /* Riduce la dimensione del bottone di scroll */
+        padding: 10px 15px;
+        /* Riduce la dimensione del bottone */
+    }
+
+    .rooms::before {
+        height: 5%;
+        /* Riduce l'altezza della sfumatura */
+    }
+}
+
+/* Ulteriori ottimizzazioni per schermi molto piccoli */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.5rem;
+        /* Riduce ulteriormente la dimensione del titolo */
+    }
+
+    .cover h2 {
+        font-size: 2rem;
+        /* Riduce la dimensione del testo nella cover */
+    }
+
+    .scroll-to-rooms {
+        font-size: 1.2rem;
+        /* Riduce ulteriormente la dimensione del bottone */
+        padding: 8px 12px;
+        /* Riduce la dimensione del bottone */
+    }
+
+    .rooms-container {
+        width: 100%;
+        /* Occupazione completa della larghezza */
+        gap: 10px;
+        /* Riduce lo spazio tra le camere */
+    }
+
+    .room h3 {
+        font-size: 4rem;
+        /* Riduce la dimensione del titolo delle camere */
+    }
+
+    .image-container {
+        height: 60%;
+        /* Riduce l'altezza delle immagini */
+    }
+}
+
+/* Impostazioni generali per dispositivi mobili */
+@media (max-width: 768px) {
+    body {
+        font-size: 1rem;
+        /* Riduce la dimensione del font per dispositivi più piccoli */
+    }
+
+    header h1 {
+        font-size: 3rem;
+        /* Riduce la dimensione del titolo */
+    }
+
+    header h2.soggiorno-relax {
+        font-size: 2rem;
+        /* Riduce il titolo della sezione "Soggiorno Relax" */
+    }
+
+    .cover h2 {
+        font-size: 2.5rem;
+        /* Riduce la dimensione del testo nella cover */
+    }
+
+    .contact-info p {
+        font-size: 1.2rem;
+        /* Riduce la dimensione del testo nei contatti */
+    }
+
+    .contact-info a {
+        font-size: 1.3rem;
+        /* Riduce la dimensione del link */
+    }
+
+    .contact-info p:last-of-type {
+        margin-bottom: 15px;
+        /* Riduce il margine sotto l'ultimo paragrafo */
+    }
+
+    .map {
+        width: 50%;
+        /* Aumenta la larghezza della mappa su schermi più piccoli */
+        height: 50%;
+        /* Riduce l'altezza della mappa */
+    }
+
+    .rooms-container {
+        flex-direction: column;
+        /* Dispone le camere in colonna su schermi più piccoli */
+        width: 90%;
+        /* Riduce la larghezza per evitare che le immagini tocchino i bordi */
+        gap: 20px;
+        /* Riduce lo spazio tra le camere */
+    }
+
+    .room img {
+        max-width: 100%;
+        /* Assicura che le immagini non escono dal contenitore */
+    }
+
+    .room-info {
+        margin-top: 20px;
+        /* Riduce il margine sopra il testo delle camere */
+        font-size: 1rem;
+        /* Riduce la dimensione del testo */
+    }
+
+    .scroll-to-rooms {
+        font-size: 1.4rem;
+        /* Riduce la dimensione del bottone di scroll */
+        padding: 10px 15px;
+        /* Riduce la dimensione del bottone */
+    }
+
+    .rooms::before {
+        height: 5%;
+        /* Riduce l'altezza della sfumatura */
+    }
+}
+
+/* Ulteriori ottimizzazioni per schermi molto piccoli */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2.5rem;
+        /* Riduce ulteriormente la dimensione del titolo */
+    }
+
+    .cover h2 {
+        font-size: 2rem;
+        /* Riduce la dimensione del testo nella cover */
+    }
+
+    .scroll-to-rooms {
+        font-size: 1.2rem;
+        /* Riduce ulteriormente la dimensione del bottone */
+        padding: 8px 12px;
+        /* Riduce la dimensione del bottone */
+    }
+
+    .rooms-container {
+        width: 100%;
+        /* Occupazione completa della larghezza */
+        gap: 10px;
+        /* Riduce lo spazio tra le camere */
+    }
+
+    .room h3 {
+        font-size: 4rem;
+        /* Riduce la dimensione del titolo delle camere */
+    }
+
+    .image-container {
+        height: 60%;
+        /* Riduce l'altezza delle immagini */
+    }
+}
