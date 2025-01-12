@@ -266,6 +266,44 @@ body {
 
 @media screen and (max-width: 480px) {
 
+    /* Evita l'avanzamento del contenuto nello scroll */
+    html,
+    body {
+        overflow: hidden;
+    }
+
+    /* Solleva ulteriormente tutto il contenuto */
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Inizia dall'alto */
+        align-items: center;
+        overflow-y: scroll;
+        height: 100vh;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        /* Snap scroll tra le sezioni */
+    }
+
+
+    .section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        align-items: center;
+        height: 100vh;
+        /* Ogni sezione occupa l'intera viewport */
+        scroll-snap-align: start;
+        padding-top: 0;
+        /* Sollevato il contenuto */
+        padding-bottom: 1vh;
+        box-sizing: border-box;
+    }
+
     /* Immagini nel carosello */
     .slick-prev:before,
     .slick-next:before {
@@ -279,22 +317,30 @@ body {
     }
 
 
-    /* Link di ritorno */
+    /* Migliora il posizionamento del back-link */
     .back-link {
         font-size: 5vw;
-        /* Ridurre la dimensione */
-        padding: 2px 4px;
+        padding: 5px 8px;
+        width: 7vw;
+        height: 7vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        top: 1vh;
+        left: 1vw;
+        position: fixed;
+        z-index: 1000;
     }
 
 
     /* Titolo delle comodità */
     .room-comforts h3 {
-        font-size: 6vw;
+        font-size: 5.5vw;
         /* Ridurre la dimensione del titolo */
         text-align: center;
-        /* Centrare il titolo */
-        margin-top: 2vh;
-        /* Spazio sopra */
+        margin-bottom: 0.7vh;
+        font-weight: bold;
     }
 
     /* Lista delle comodità */
@@ -308,19 +354,20 @@ body {
     .room-comforts li {
         font-size: 4vw;
         /* Ridurre la dimensione dei testi della lista */
-        margin-bottom: 2vh;
+        margin-bottom: 0.5vh;
         /* Spazio tra gli elementi */
         font-weight: 300;
     }
 
     /* Galleria */
     .gallery {
-        margin-top: 5vh;
-        margin-bottom: 5vh;
+        margin-top: -5vh;
+        margin-bottom: 0;
         width: 100%;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        gap: 1vh;
     }
 
     /* Immagine nel carosello */
@@ -336,7 +383,7 @@ body {
     /* Stili slider */
     #sliderSyncingThumb1 .img-fluid,
     #sliderSyncingThumb2 .img-fluid {
-        width: 40vw;
+        width: 60vw;
         /* Ridurre la larghezza delle immagini in slide */
         height: auto;
 
@@ -345,29 +392,15 @@ body {
     /* Immagine nelle slide */
     #sliderSyncingThumb1 .slick-slide img,
     #sliderSyncingThumb2 .slick-slide img {
-        width: 10vw;
-        height: auto;
-        /* Mantieni l'altezza proporzionale */
-
+        width: 9vw;
+        height: 7vh;
+        object-fit: cover;
     }
 
-    /* Centratura delle frecce */
-    .slick-prev,
-    .slick-next {
-        z-index: 1000;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    .slick-prev {
-        left: 0.5vw;
-        /* Più vicino al bordo sinistro */
-    }
-
-    .slick-next {
-        right: 0.5vw;
-        /* Più vicino al bordo destro */
+    #sliderSyncingThumb1 .slick-slide,
+    #sliderSyncingThumb2 .slick-slide {
+        margin-top: 0;
+        margin-bottom: 0;
     }
 
 }
