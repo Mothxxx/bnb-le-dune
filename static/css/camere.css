@@ -269,12 +269,12 @@ body {
     /* Immagini nel carosello */
     .slick-prev:before,
     .slick-next:before {
-        font-size: 6vw;
+        display: none !important;
         /* Riduce la dimensione delle frecce */
     }
 
     .img-container {
-        width: 60vw;
+        width: 75vw;
         height: auto;
     }
 
@@ -325,7 +325,7 @@ body {
 
     /* Immagine nel carosello */
     .img-fluid {
-        width: 80vw;
+        width: 90vw;
         /* Ridurre la larghezza dell'immagine nella galleria */
         height: 50vh;
         object-fit: cover;
@@ -336,7 +336,7 @@ body {
     /* Stili slider */
     #sliderSyncingThumb1 .img-fluid,
     #sliderSyncingThumb2 .img-fluid {
-        width: 30vw;
+        width: 40vw;
         /* Ridurre la larghezza delle immagini in slide */
         height: auto;
 
