@@ -21,6 +21,12 @@ section {
 
 }
 
+
+html,
+body {
+    overflow: hidden;
+}
+
 /* Stili generali */
 body {
     font-family: Arial, sans-serif;
@@ -34,6 +40,8 @@ body {
     position: relative;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .back-link {

@@ -21,11 +21,8 @@ body {
     margin: 0;
     padding: 0;
     height: 100%;
-    /* Assicura che il corpo occupi l'intera altezza */
-    overflow: auto;
-    /* Nasconde la scrollbar */
+    overflow: hidden;
     scroll-snap-type: y mandatory;
-    /* Impostato per lo scroll verticale */
     scroll-padding-top: 0;
 }
 
@@ -34,56 +31,53 @@ body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: 1.4;
     overflow-x: hidden;
     scroll-snap-type: y mandatory;
-    /* Imposta lo snap verticale */
     scroll-padding-top: 0;
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .cover,
 .rooms {
     height: 100vh;
-    /* Ogni sezione occupa l'intero schermo */
     scroll-snap-align: start;
-    /* Allinea ogni sezione all'inizio dello schermo */
-    padding: 20px;
-    /* Aggiungi padding se desideri */
+    padding: 2vw;
 }
 
 /* HEADER */
 header {
     position: static;
     width: 100%;
-    top: 20px;
+    top: 2vw;
     left: 50%;
     z-index: 10;
-    padding: 20px 0;
+    padding: 2vw 0;
     background-color: transparent;
     text-align: center;
     margin-bottom: 0;
 }
 
 header h1 {
-    margin-top: -20px;
-    font-size: 5rem;
+    margin-top: -2vh;
+    font-size: 6vw;
     /* Titolo grande */
     margin: 0;
     font-weight: 500;
     font-family: 'Montserrat', sans-serif;
     /* Font geometrico per il titolo */
-    letter-spacing: 2px;
+    letter-spacing: 0.2vw;
     color: #000;
 }
 
 /* Applicare lo stile solo al "Soggiorno Relax" */
 header h2.soggiorno-relax {
-    font-size: 3rem;
+    font-size: 4vw;
     font-family: 'Montserrat', sans-serif;
     color: #000;
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 2vw;
 }
 
 /* COVER SECTION */
@@ -106,7 +100,7 @@ header h2.soggiorno-relax {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 10%;
+    height: 10vh;
     /* Altezza della sfumatura */
     background: linear-gradient(to bottom, rgba(173, 216, 230, 0) 0%, rgba(173, 216, 230, 1) 100%);
     z-index: 2;
@@ -135,82 +129,84 @@ header h2.soggiorno-relax {
     top: 75%;
     left: 45%;
     transform: translate(-50%, -50%);
-    /* Centro esatto rispetto alla cover */
     width: 80%;
-    /* Imposta la larghezza della sezione */
     text-align: left;
-    /* Allineamento del testo a sinistra */
     padding: 0;
-    /* Rimuove il padding */
 }
 
 .contact-info p {
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+    font-size: 1.9vw;
+    margin-bottom: 1vw;
     line-height: 0.7;
     font-family: 'Roboto', sans-serif;
-    /* Font più moderno */
     color: #333;
     font-weight: 300;
 }
 
+
+/* Info Contatti (WhatsApp, Email) */
+.contact-info {
+    position: relative;
+    top: -3vh;
+
+}
+
 .contact-info a {
-    font-size: 1.5rem;
-    color: #9f4023;
+    font-size: 1.9vw;
+    color: #002fff;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 .contact-info a:hover {
     text-decoration: none;
-    color: #0d6780;
-}
-
-/* Distanziamento della mappa dal testo "La nostra posizione" */
-.contact-info p:last-of-type {
-    margin-bottom: 30px;
-    /* Aumenta il margine per distanziare la mappa */
+    color: #7e007c;
 }
 
 /* MAPPA */
 .map {
-    width: 15%;
-    /* Quadrato molto piccolo */
-    height: 40%;
+    position: absolute;
+    top: 35%;
+    /* Posizionamento a partire dal 75% dell'altezza della pagina, come la sezione contatti */
+    right: -16%;
+    width: 12vw;
+    height: 12vh;
     overflow: hidden;
-    margin-top: 20px;
-    /* Distanza sopra la mappa */
+    transition: all 0.5s ease;
+
 }
 
 .map iframe {
+
     width: 80%;
-    /* Occupa il 100% della larghezza disponibile */
-    height: 140%;
-    /* Occupa il 100% dell'altezza disponibile */
+    height: 100%;
     border: 0;
-    /* Rimuove il bordo dell'iframe */
     border-radius: 10px;
     margin: 0 auto;
+    pointer-events: none;
 }
 
 .address {
-    font-size: 1.3rem;
-    margin-top: -10px;
+    position: absolute;
+    /* Posizionamento assoluto per sovrapporlo sopra la mappa */
+    top: 13vh;
+    right: -14%;
+    padding: 1vw;
+    font-size: 1.2vw;
     font-family: 'Roboto', sans-serif;
     /* Font più moderno */
-    color: #333;
+    color: #ffffff;
     font-weight: 400;
+    text-align: right;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+
 
 /* Stili per il link di ancoraggio */
 .scroll-to-rooms {
     position: absolute;
-    bottom: 100px;
+    bottom: 5vw;
     /* Distanza dal fondo della sezione */
     transform: translateX(-50%);
     /* Centra perfettamente il link */
@@ -220,13 +216,13 @@ html {
     /* Colore del testo */
     font-family: 'Montserrat', sans-serif;
     /* Font elegante */
-    font-size: 1.6rem;
+    font-size: 2vw;
     /* Dimensione del testo */
-    padding: 15px 20px;
+    padding: 0.5vh 2vw;
     /* Spazio interno per rendere il bottone largo */
     text-decoration: none;
     /* Rimuove la sottolineatura */
-    border-radius: 30px;
+    border-radius: 2vw;
     /* Bordi arrotondati per un effetto più morbido */
     display: inline-block;
     /* Mantiene il bottone inline */
@@ -248,10 +244,10 @@ html {
 .scroll-to-rooms .arrow {
     color: #108c9a9a;
     display: block;
-    font-size: 3rem;
+    font-size: 3vw;
     /* Dimensione della freccia */
     position: absolute;
-    top: -65px;
+    top: -7vh;
     /* La freccia esce sopra il bottone */
     left: 50%;
     /* Centra la freccia orizzontalmente */
@@ -446,249 +442,91 @@ html {
 }
 
 
-/* Media Query for Tablets */
-@media (max-width: 768px) {
-    header {
-        font-size: 18px;
+/* Dispositivi molto piccoli (mobile portrait) */
+@media only screen and (max-width: 480px) {
+    header h1 {
+        font-size: 10vw;
+        /* Riduce ancora di più la dimensione del titolo */
     }
 
-    .container {
-        padding: 10px;
+    header h2.soggiorno-relax {
+        font-size: 6vw;
+        margin-bottom: 3vh;
+        /* Riduce la dimensione del sottotitolo */
     }
 
-    /* Adjusting layout for mobile screens */
-    .content {
+    /* COVER */
+    .cover {
+        height: 80vh;
+        /* Riduce l'altezza della cover */
+        padding: 5vw;
+        /* Riduce il padding */
+    }
+
+    .cover h2 {
+        font-size: 1.8rem;
+        /* Riduce la dimensione del testo */
+    }
+
+    .contact {
+        position: absolute;
+        top: 73%;
+        /* Adatta meglio la posizione */
+        left: 53%;
+        transform: translate(-50%, -50%);
+        width: 95%;
+        /* Ingrandisce il contatto */
+    }
+
+    .contact-info p {
+        font-size: 5vw;
+        margin-bottom: 6vw;
+
+    }
+
+    .contact-info a {
+        font-size: 5vw;
         display: block;
-        padding: 10px;
-    }
-}
-
-/* Impostazioni generali per dispositivi mobili */
-@media (max-width: 768px) {
-    body {
-        font-size: 1rem;
-        /* Riduce la dimensione del font per dispositivi più piccoli */
-    }
-
-    header h1 {
-        font-size: 3rem;
-        /* Riduce la dimensione del titolo */
-    }
-
-    header h2.soggiorno-relax {
-        font-size: 2rem;
-        /* Riduce il titolo della sezione "Soggiorno Relax" */
-    }
-
-    .cover h2 {
-        font-size: 2.5rem;
-        /* Riduce la dimensione del testo nella cover */
-    }
-
-    .contact-info p {
-        font-size: 1.2rem;
-        /* Riduce la dimensione del testo nei contatti */
-    }
-
-    .contact-info a {
-        font-size: 1.3rem;
-        /* Riduce la dimensione del link */
-    }
-
-    .contact-info p:last-of-type {
-        margin-bottom: 15px;
-        /* Riduce il margine sotto l'ultimo paragrafo */
+        margin-top: 1vh;
+        margin-bottom: 4vw;
+        color: #036d85;
+        /* Aumenta la dimensione del link */
     }
 
     .map {
-        width: 50%;
-        /* Aumenta la larghezza della mappa su schermi più piccoli */
-        height: 50%;
-        /* Riduce l'altezza della mappa */
+        position: absolute;
+        top: 95%;
+        right: 5%;
+        width: 25vw;
+        /* Allarga ulteriormente la mappa */
+        height: 10vh;
+        /* Aumenta l'altezza della mappa */
     }
 
-    .rooms-container {
-        flex-direction: column;
-        /* Dispone le camere in colonna su schermi più piccoli */
-        width: 90%;
-        /* Riduce la larghezza per evitare che le immagini tocchino i bordi */
-        gap: 20px;
-        /* Riduce lo spazio tra le camere */
-    }
-
-    .room img {
-        max-width: 100%;
-        /* Assicura che le immagini non escono dal contenitore */
-    }
-
-    .room-info {
-        margin-top: 20px;
-        /* Riduce il margine sopra il testo delle camere */
-        font-size: 1rem;
-        /* Riduce la dimensione del testo */
+    .address {
+        position: absolute;
+        top: 60%;
+        right: 10%;
+        /* Centra orizzontalmente */
+        font-size: 3vw;
+        /* Riduce la dimensione del testo dell'indirizzo */
+        margin-top: 2vw;
+        /* Spaziatura sopra l'indirizzo */
+        color: #fff;
+        /* Imposta il colore del testo dell'indirizzo */
     }
 
     .scroll-to-rooms {
-        font-size: 1.4rem;
-        /* Riduce la dimensione del bottone di scroll */
-        padding: 10px 15px;
+        bottom: 5vw;
+        /* Adatta la posizione del bottone */
+        font-size: 4vw;
         /* Riduce la dimensione del bottone */
+        padding: 2vw 3vw;
+        /* Rende il bottone più grande */
     }
 
-    .rooms::before {
-        height: 5%;
-        /* Riduce l'altezza della sfumatura */
-    }
-}
-
-/* Ulteriori ottimizzazioni per schermi molto piccoli */
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 2.5rem;
-        /* Riduce ulteriormente la dimensione del titolo */
-    }
-
-    .cover h2 {
-        font-size: 2rem;
-        /* Riduce la dimensione del testo nella cover */
-    }
-
-    .scroll-to-rooms {
-        font-size: 1.2rem;
-        /* Riduce ulteriormente la dimensione del bottone */
-        padding: 8px 12px;
-        /* Riduce la dimensione del bottone */
-    }
-
-    .rooms-container {
-        width: 100%;
-        /* Occupazione completa della larghezza */
-        gap: 10px;
-        /* Riduce lo spazio tra le camere */
-    }
-
-    .room h3 {
-        font-size: 4rem;
-        /* Riduce la dimensione del titolo delle camere */
-    }
-
-    .image-container {
-        height: 60%;
-        /* Riduce l'altezza delle immagini */
-    }
-}
-
-/* Impostazioni generali per dispositivi mobili */
-@media (max-width: 768px) {
-    body {
-        font-size: 1rem;
-        /* Riduce la dimensione del font per dispositivi più piccoli */
-    }
-
-    header h1 {
-        font-size: 3rem;
-        /* Riduce la dimensione del titolo */
-    }
-
-    header h2.soggiorno-relax {
-        font-size: 2rem;
-        /* Riduce il titolo della sezione "Soggiorno Relax" */
-    }
-
-    .cover h2 {
-        font-size: 2.5rem;
-        /* Riduce la dimensione del testo nella cover */
-    }
-
-    .contact-info p {
-        font-size: 1.2rem;
-        /* Riduce la dimensione del testo nei contatti */
-    }
-
-    .contact-info a {
-        font-size: 1.3rem;
-        /* Riduce la dimensione del link */
-    }
-
-    .contact-info p:last-of-type {
-        margin-bottom: 15px;
-        /* Riduce il margine sotto l'ultimo paragrafo */
-    }
-
-    .map {
-        width: 50%;
-        /* Aumenta la larghezza della mappa su schermi più piccoli */
-        height: 50%;
-        /* Riduce l'altezza della mappa */
-    }
-
-    .rooms-container {
-        flex-direction: column;
-        /* Dispone le camere in colonna su schermi più piccoli */
-        width: 90%;
-        /* Riduce la larghezza per evitare che le immagini tocchino i bordi */
-        gap: 20px;
-        /* Riduce lo spazio tra le camere */
-    }
-
-    .room img {
-        max-width: 100%;
-        /* Assicura che le immagini non escono dal contenitore */
-    }
-
-    .room-info {
-        margin-top: 20px;
-        /* Riduce il margine sopra il testo delle camere */
-        font-size: 1rem;
-        /* Riduce la dimensione del testo */
-    }
-
-    .scroll-to-rooms {
-        font-size: 1.4rem;
-        /* Riduce la dimensione del bottone di scroll */
-        padding: 10px 15px;
-        /* Riduce la dimensione del bottone */
-    }
-
-    .rooms::before {
-        height: 5%;
-        /* Riduce l'altezza della sfumatura */
-    }
-}
-
-/* Ulteriori ottimizzazioni per schermi molto piccoli */
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 2.5rem;
-        /* Riduce ulteriormente la dimensione del titolo */
-    }
-
-    .cover h2 {
-        font-size: 2rem;
-        /* Riduce la dimensione del testo nella cover */
-    }
-
-    .scroll-to-rooms {
-        font-size: 1.2rem;
-        /* Riduce ulteriormente la dimensione del bottone */
-        padding: 8px 12px;
-        /* Riduce la dimensione del bottone */
-    }
-
-    .rooms-container {
-        width: 100%;
-        /* Occupazione completa della larghezza */
-        gap: 10px;
-        /* Riduce lo spazio tra le camere */
-    }
-
-    .room h3 {
-        font-size: 4rem;
-        /* Riduce la dimensione del titolo delle camere */
-    }
-
-    .image-container {
-        height: 60%;
-        /* Riduce l'altezza delle immagini */
+    .scroll-to-rooms .arrow {
+        font-size: 8vw;
+        /* Ancora più grande per i dispositivi più piccoli */
     }
 }
