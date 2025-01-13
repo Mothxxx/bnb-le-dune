@@ -8,6 +8,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Aileron&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
+
+/* Impostazione viewport per dispositivi mobili */
+@viewport {
+    width: device-width;
+    initial-scale: 1.0;
+}
+
 /* Imposta una transizione per ogni sezione */
 section {
     height: 100vh;
@@ -206,7 +213,7 @@ header h2.soggiorno-relax {
 /* Stili per il link di ancoraggio */
 .scroll-to-rooms {
     position: absolute;
-    bottom: 5vw;
+    bottom: 8vw;
     /* Distanza dal fondo della sezione */
     transform: translateX(-50%);
     /* Centra perfettamente il link */
@@ -247,7 +254,7 @@ header h2.soggiorno-relax {
     font-size: 3vw;
     /* Dimensione della freccia */
     position: absolute;
-    top: -7vh;
+    top: -9vh;
     /* La freccia esce sopra il bottone */
     left: 50%;
     /* Centra la freccia orizzontalmente */
@@ -322,10 +329,10 @@ header h2.soggiorno-relax {
     flex-direction: row;
     /* Dispone gli elementi orizzontalmente */
     justify-content: space-between;
-    gap: 30px;
-    width: 70%;
+    gap: 4vw;
+    width: 70vw;
     transform: translateY(100px);
-    padding: 40px;
+    padding: 5vh;
     /* Aumenta il padding per distanziare le foto dai titoli */
 }
 
@@ -347,7 +354,7 @@ header h2.soggiorno-relax {
 }
 
 .room:hover {
-    transform: translateY(-5px);
+    transform: translateY(-0.7vh);
     /* Effetto hover che solleva il box */
 }
 
@@ -357,37 +364,33 @@ header h2.soggiorno-relax {
     /* Occupa il 90% della larghezza del box */
     height: 80%;
     /* Altezza dinamica per mantenere coerenza */
-
+    gap: 9vw;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     /* Nasconde eventuali parti eccedenti */
-    margin-bottom: 5px;
+    margin-bottom: 0.7vh;
     position: relative;
     /* Per posizionamento interno */
-    border-radius: 15px;
-    /* Arrotonda i bordi */
-    box-shadow: 0 7px 16px rgba(0, 0, 0, 0.2), 0 10px 15px rgba(0, 0, 0, 0.1);
-    /* Ombra */
+    border-radius: 2vw;
 }
 
 .image-container img {
-    width: 100%;
+    width: 40vw;
     /* L'immagine occupa tutta la larghezza del contenitore */
-    height: 100%;
+    height: 40vh;
     /* Mantiene le proporzioni dell'immagine */
     object-fit: cover;
-    /* L'immagine viene adattata al contenitore senza tagli */
-    max-height: 100%;
+
     /* Impedisce che l'immagine ecceda l'altezza */
     position: relative;
     /* Mantiene l'immagine all'interno del contenitore */
-    border-radius: 15px;
+    border-radius: 2vw;
 }
 
 /* Testo sotto l'immagine */
 .room-info {
-    margin-top: 40px;
+    margin-top: 2vh;
     /* Aumenta il margine superiore per distanziare le foto dai titoli */
     text-align: center;
     width: 80%;
@@ -396,12 +399,12 @@ header h2.soggiorno-relax {
 
 /* Titolo della camera */
 .room h3 {
-    margin-top: 20px;
-    font-size: 6rem;
+    margin-top: 2.4vh;
+    font-size: 4vw;
     /* Più grande per un effetto più prominente */
     color: #ffffff;
     /* Colore scuro per il testo */
-    letter-spacing: 1px;
+    letter-spacing: 0.1vw;
     font-family: 'Great Vibes', serif;
     /* Font più moderno */
     margin-bottom: 0;
@@ -409,7 +412,7 @@ header h2.soggiorno-relax {
 
 /* Descrizione della camera */
 .room p {
-    font-size: 1.6rem;
+    font-size: 2vh;
     /* Dimensione leggera e leggibile */
     color: #ffffff;
     /* Colore grigio per il testo secondario */
@@ -425,7 +428,7 @@ header h2.soggiorno-relax {
 }
 
 #fixed-footer {
-    width: 100%;
+    width: 100vw;
     /* Larghezza completa del footer */
     background-color: #333;
     /* Colore di sfondo */
@@ -433,7 +436,7 @@ header h2.soggiorno-relax {
     /* Colore del testo */
     text-align: center;
     /* Centra il contenuto */
-    padding: 4px 0;
+    padding: 0.5vh 0;
     /* Spaziatura interna */
     position: absolute;
     /* Posizionato all'interno della sezione */
@@ -441,9 +444,48 @@ header h2.soggiorno-relax {
     /* Fissato in basso */
 }
 
+.cover,
+.rooms {
+    background-size: cover;
+    /* Mantiene l'immagine adattata al contenitore */
+    background-position: center center;
+    /* Centra l'immagine in modo uniforme */
+    background-repeat: no-repeat;
+    /* Impedisce la ripetizione dell'immagine */
+}
 
 /* Dispositivi molto piccoli (mobile portrait) */
 @media only screen and (max-width: 480px) {
+
+    .rooms::before {
+        height: 1%;
+        /* Ulteriore riduzione dell'altezza della sfumatura */
+        background: linear-gradient(to top, rgba(173, 216, 230, 0) 20%, rgba(173, 216, 230, 0.2) 100%);
+        /* Sfumatura ancora più leggera */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+    }
+
+    /* Solleva ulteriormente tutto il contenuto */
+    body {
+        margin: 0;
+        padding: 0;
+        flex-direction: column;
+        justify-content: flex-start;
+        /* Inizia dall'alto */
+        align-items: center;
+        overflow-x: hidden;
+        /* Impedisce lo scorrimento orizzontale */
+        overflow-y: scroll;
+        height: 100vh;
+        scroll-snap-type: y mandatory;
+        scroll-behavior: smooth;
+        /* Snap scroll tra le sezioni */
+    }
+
     header h1 {
         font-size: 10vw;
         /* Riduce ancora di più la dimensione del titolo */
@@ -457,10 +499,11 @@ header h2.soggiorno-relax {
 
     /* COVER */
     .cover {
-        height: 80vh;
+        height: 90vh;
         /* Riduce l'altezza della cover */
         padding: 5vw;
         /* Riduce il padding */
+        box-sizing: border-box;
     }
 
     .cover h2 {
@@ -517,16 +560,116 @@ header h2.soggiorno-relax {
     }
 
     .scroll-to-rooms {
-        bottom: 5vw;
+        position: absolute;
+        bottom: 10vw;
         /* Adatta la posizione del bottone */
         font-size: 4vw;
         /* Riduce la dimensione del bottone */
         padding: 2vw 3vw;
+        z-index: 2;
+        pointer-events: auto;
         /* Rende il bottone più grande */
     }
 
     .scroll-to-rooms .arrow {
-        font-size: 8vw;
-        /* Ancora più grande per i dispositivi più piccoli */
+        color: #108c9a9a;
+        display: block;
+        font-size: 9vw;
+        /* Dimensione della freccia */
+        position: absolute;
+        top: -6vh;
+        /* La freccia esce sopra il bottone */
     }
+
+    .rooms-container {
+        flex-direction: column;
+
+        margin-top: -20vh;
+        /* Maggiore separazione verticale */
+        width: 70vw;
+        /* Più spazio utilizzato */
+        padding: 2vh 0vw;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        /* Altezza aumentata per ospitare meglio le camere */
+        box-sizing: border-box;
+        gap: 7vh;
+    }
+
+    .room h3 {
+        white-space: nowrap;
+        /* Impedisce di andare a capo */
+        overflow: visible;
+        /* Evita il traboccamento del testo */
+        text-overflow: clip;
+        /* Mostra i puntini se il testo è troppo lungo */
+        font-size: 6vw;
+        /* Ridotto per adattarsi meglio su mobile */
+        text-align: center;
+        /* Centra il titolo */
+        margin-top: 0;
+        /* Ridotto per schermi più piccoli */
+    }
+
+    .room p {
+        font-size: 1.3vh;
+    }
+
+    .image-container {
+        width: 100%;
+        /* Adatta la larghezza al contenitore */
+        height: 25vh;
+        max-height: 30vh;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        /* Centra il contenuto orizzontalmente e verticalmente */
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        /* Riduzione altezza immagine per dispositivi piccoli */
+    }
+
+    #fixed-footer {
+        position: absolute;
+        padding: 0.5vh;
+        height: 5vh;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .room-info {
+        margin-top: 2vh;
+        /* Ridotto il margine per un allineamento più stretto */
+        width: 100%;
+        /* Uniforma la larghezza del testo con l'immagine */
+        padding: 0;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .room h3,
+    .room p {
+        margin: 0;
+        padding: 0.5vh 0;
+    }
+
+    .cover {
+        background-position: center right 40%;
+        /* Sposta l'immagine un po' a sinistra */
+    }
+
+    .rooms {
+        background-position: center left 60%;
+        background-size: cover;
+        /* Stessa modifica per la sezione rooms */
+    }
+
+
 }
