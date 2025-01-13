@@ -191,7 +191,6 @@ header h2.soggiorno-relax {
     border: 0;
     border-radius: 10px;
     margin: 0 auto;
-    pointer-events: none;
 }
 
 .address {
@@ -604,7 +603,7 @@ header h2.soggiorno-relax {
         /* Evita il traboccamento del testo */
         text-overflow: clip;
         /* Mostra i puntini se il testo è troppo lungo */
-        font-size: 6vw;
+        font-size: 8vw;
         /* Ridotto per adattarsi meglio su mobile */
         text-align: center;
         /* Centra il titolo */
