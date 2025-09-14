@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ camera.title }}</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  
+  <!-- Slick Carousel CSS - IMPORTANTE! -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+  
+  <!-- Lightbox CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+</head>
+<body>
+
+<a href="#" class="back-link" onclick="return confirmBack();">
+    <i class="fas fa-arrow-left"></i>
+</a>
+
+<section class="room-details">
+  <div class="gallery-container">
+    
+    <!-- Carosello miniature verticali a sinistra -->
+    <div class="thumbnails-sidebar">
+      <div id="sliderSyncingThumb" class="thumb-carousel-vertical">
+        {% for img in camera.main_images %}
+        <div class="thumb-slide" style="cursor:pointer;">
+          <img class="img-fluid" src="{{ img }}" alt="Anteprima">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Immagine grande al centro -->
+    <div class="main-image-area">
+      <div id="sliderSyncingNav" class="main-carousel">
+        {% for img in camera.main_images %}
+        <div class="slide">
+          <div class="img-container">
+            <a href="{{ img }}" data-lightbox="gallery">
+              <img class="img-fluid" src="{{ img }}" alt="Immagine principale">
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Comfort a destra -->
+    <div class="room-comforts">
+        <h3>Comfort</h3>
+        <ul>
+            {% for item in camera.comforts %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Slick Carousel JS -->
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<!-- Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  // Carosello principale (SENZA frecce)
+  $('#sliderSyncingNav').slick({
+    infinite: true,
+    arrows: false, // Rimosse le frecce
+    fade: true,
+    asNavFor: '#sliderSyncingThumb',
+    adaptiveHeight: true
+  });
+
+  // Carosello miniature verticali
+  $('#sliderSyncingThumb').slick({
+    infinite: true,
+    slidesToShow: 4, // Mostra 4 miniature alla volta in verticale
+    slidesToScroll: 1,
+    asNavFor: '#sliderSyncingNav',
+    focusOnSelect: true,
+    vertical: true, // IMPORTANTE: layout verticale
+    verticalSwiping: true,
+    arrows: false, // Rimosse le frecce
+    centerMode: true,
+    centerPadding: '10px',
+    responsive: [
+      { 
+        breakpoint: 768, 
+        settings: { 
+          vertical: false,
+          slidesToShow: 3,
+          centerMode: true,
+          centerPadding: '20px'
+        } 
+      },
+      { 
+        breakpoint: 554, 
+        settings: { 
+          vertical: false,
+          slidesToShow: 2,
+          centerMode: false
+        } 
+      }
+    ]
+  });
+});
+
+function confirmBack() {
+    window.history.back();
+    return false;
+}
+</script>
+
+<style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* blocca scroll verticale e orizzontale */
+}
+body {
+    /* Sfondo dinamico per ogni camera */
+    background: url('{{ camera.background_image }}') no-repeat center center fixed;
+    background-size: 120%; /* Zoom aumentato del 20% */
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+/* Overlay per blur, opacità e luminosità */
+body {
+  background: url('{{ camera.background_image }}') no-repeat center center fixed;
+  background-size: cover; /* adatta sempre */
+}
+
+/* Overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('{{ camera.background_image }}') no-repeat center center;
+  background-size: cover;
+  filter: blur(8px) brightness(0.3);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+/* Layout principale a tre colonne */
+.gallery-container {
+    display: flex;
+    max-width: 1400px;
+    margin: 80px auto 0;
+    gap: 20px;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap; /* permette alle colonne di andare sotto se lo spazio non basta */
+}
+
+/* Sidebar sinistra per le miniature */
+.thumbnails-sidebar {
+    flex: 0 0 auto;
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* centra verticalmente */
+    margin-left: 2.5rem;
+}
+
+/* Carosello verticale delle miniature */
+.thumb-carousel-vertical {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.thumb-carousel-vertical .slick-slide {
+    margin: 5px 0;
+}
+
+.thumb-carousel-vertical .slick-slide img {
+    width: 160px !important;
+    height: 90px !important;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    display: block;
+    margin: auto;
+}
+
+.thumb-carousel-vertical .slick-slide.slick-current img,
+.thumb-carousel-vertical .slick-slide.slick-center img {
+    border-color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+.thumb-carousel-vertical .slick-slide img:hover {
+    transform: scale(1.05);
+    border-color: rgba(255,255,255,0.7);
+}
+
+/* Area immagine principale centrale */
+.main-image-area {
+  flex: 1 1 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 0 auto;          /* centrata di default */
+}
+
+.main-carousel {
+    width: 100%;
+    max-width: 600px;
+}
+
+.main-carousel {
+    width: 100%;
+    max-width: 600px;
+}
+
+.main-carousel .img-container {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* mantiene proporzione costante del box */
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.1); /* sfondo per far risaltare bordi quando la foto è corta */
+    flex-shrink: 0; /* impedisce che il box venga schiacciato */
+}
+
+.main-carousel .img-fluid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* mantiene proporzioni, ritaglia se necessario */
+    border-radius: 20px;
+}
+
+
+/* Comfort colonna destra */
+.room-comforts {
+    flex: 0 0 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 200px; /* impedisce che diventi troppo stretto */
+    box-sizing: border-box;
+    padding: 0 10px; /* margini interni */
+    margin-right: 1.5rem;
+}
+
+.room-comforts h3 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 10px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 8px;
+}
+
+.room-comforts ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.room-comforts li {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 10px;
+    font-weight: 300;
+    padding: 6px 12px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    border-left: 3px solid #fff;
+    backdrop-filter: blur(10px);
+    display: block;
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.back-link {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(255, 255, 255, 0.15); /* opaco delicato */
+    backdrop-filter: blur(5px);
+    border-radius: 50%;
+    text-decoration: none;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.back-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .thumbnails-sidebar { width: 15%; min-width: 120px; margin-left: 1.5rem; }
+    .room-comforts { width: 20%; min-width: 180px; margin-right: 1.5rem;}
+    .main-image-area { flex: 1 1 400px; }
+}
+
+@media (max-width: 992px) {
+    body {
+        background-attachment: scroll; /* evita “fixed” su mobile */
+        background-size: cover;
+    }
+
+    body::before {
+        position: absolute; /* non fixed su mobile */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transform: none; /* togli scale extra */
+    }
+    .thumb-carousel-vertical,
+    .thumbnails-sidebar {
+        display: none; /* nasconde sidebar/carousel già a 992px */
+    }
+
+    .gallery-container { gap: 15px; }
+    .room-comforts li { padding: 5px 10px; font-size: 1rem; }
+    .main-image-area {
+        flex: 1 1 auto;
+        width: 90%;           /* non prende tutto lo schermo */
+        max-width: 600px;
+        padding: 0 5vw;       /* padding proporzionale ai lati */
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    .main-carousel {
+        width: 100%;
+        max-width: 100%;
+    }
+
+  .main-carousel .img-container {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+        background-size: cover;
+        background-color: #000;
+    }
+
+    body::before {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform: none;
+        filter: blur(6px) brightness(0.3); /* blur più leggero per performance */
+    }
+    .back-link {
+        top: 0.8rem;
+        left: 0.8rem;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+    }
+
+    .gallery-container {
+        flex-direction: column; /* le colonne vanno sotto */
+        align-items: center;    /* centra orizzontalmente */
+        justify-content: flex-start; /* evita centratura verticale */
+        margin-top: 60px;
+        gap: 20px;
+        min-height: auto; /* togli calc(100vh - 60px) per permettere scroll */
+    }
+     .main-image-area {
+        width: 90%;           /* 90% viewport */
+        max-width: 500px;     /* non cresce oltre */
+        padding: 0 5vw;
+        margin: 0 auto;
+        justify-content: center;
+    }
+
+    .main-carousel {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .thumbnails-sidebar, .room-comforts {
+        width: 100%;
+        max-width: 50%;
+    }
+    
+    .thumb-carousel-vertical {
+        display: none; /* sparisce su mobile */
+    }
+    
+    .main-image-area {
+        width: 90%;
+        max-width: 500px;
+        margin: 30px auto 20px auto; /* margine superiore aumenta, spinge l'immagine verso il centro */
+        display: flex;
+        flex-direction: column;
+        align-items: center;      /* centra contenuto interno orizzontalmente */
+        justify-content: center;  /* centra contenuto interno verticalmente */
+    }
+
+    .room-comforts {
+        width: 90%;
+        max-width: 500px;
+        margin: 0 auto;           /* Comfort resta al suo posto */
+        display: flex;
+        flex-direction: column;
+        align-items: center;      /* centra testo orizzontalmente */
+        justify-content: flex-start; /* mantiene la lista Comfort in alto rispetto all'immagine */
+    }
+    .main-carousel .img-container {
+        width: 100%;
+        height: auto;        
+        max-height: 50vh;
+        border-radius: 16px;
+    }
+
+    .main-carousel .img-fluid {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .room-comforts h3 {
+        font-size: 1.8rem;
+        text-align: center;    /* centra titolo */
+    }
+
+    .room-comforts ul {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .room-comforts li {
+        font-size: 1rem;
+        padding: 5px 8px;
+        text-align: center;    /* centra testo */
+        max-width: 100%;
+        margin: 0 auto 10px auto;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .back-link {
+        top: 0.6rem;
+        left: 0.6rem;
+        width: 1.8rem;
+        height: 1.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+</style>
+
+</body>
+</html>

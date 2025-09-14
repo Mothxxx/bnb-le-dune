@@ -107,7 +107,7 @@ header h2.soggiorno-relax {
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 10vh;
+    height: 3vh;
     /* Altezza della sfumatura */
     background: linear-gradient(to bottom, rgba(173, 216, 230, 0) 0%, rgba(173, 216, 230, 1) 100%);
     z-index: 2;
@@ -120,14 +120,10 @@ header h2.soggiorno-relax {
 
 .cover h2 {
     font-family: 'Great Vibes', cursive;
-    /* Cambia il font */
-    font-weight: italic;
-    font-weight: 400;
     font-size: 3rem;
-    margin: 0;
-    padding-bottom: 0;
-    color: #000;
-    letter-spacing: 1px;
+    line-height: 1.4;
+    color: #363a4d; /* colore armonizzato con la palette */
+    margin-bottom: 1.5rem;
 }
 
 /* Sezione Contatti nella Cover */
@@ -142,12 +138,11 @@ header h2.soggiorno-relax {
 }
 
 .contact-info p {
-    font-size: 1.9vw;
-    margin-bottom: 1vw;
-    line-height: 0.7;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
     color: #333;
-    font-weight: 300;
+    margin-bottom: 0.8rem;
 }
 
 
@@ -159,53 +154,47 @@ header h2.soggiorno-relax {
 }
 
 .contact-info a {
-    font-size: 1.9vw;
-    color: #002fff;
+    display: inline-block;
+    padding: 0.5rem 1.2rem; /* meno spessi */
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
     text-decoration: none;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
+    color: #fff;
+    background: rgba(16, 140, 154, 0.7); /* colore semi-trasparente */
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
 }
 
 .contact-info a:hover {
-    text-decoration: none;
-    color: #7e007c;
+    background: rgba(126, 0, 124, 0.8); /* semi-trasparente più intenso al passaggio */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.3);
 }
 
 /* MAPPA */
 .map {
     position: absolute;
-    top: 35%;
+    top: 50%;
     /* Posizionamento a partire dal 75% dell'altezza della pagina, come la sezione contatti */
     right: -16%;
-    width: 12vw;
-    height: 12vh;
+    width: 15vw;
+    height: 17vh;
     overflow: hidden;
     transition: all 0.5s ease;
 
 }
 
 .map iframe {
-    width: 80%;
+    width: 100%;
     height: 100%;
     border: 0;
     border-radius: 10px;
     margin: 0 auto;
 }
-
-.address {
-    position: absolute;
-    /* Posizionamento assoluto per sovrapporlo sopra la mappa */
-    top: 13vh;
-    right: -14%;
-    padding: 1vw;
-    font-size: 1.2vw;
-    font-family: 'Roboto', sans-serif;
-    /* Font più moderno */
-    color: #ffffff;
-    font-weight: 400;
-    text-align: right;
-}
-
 
 
 /* Stili per il link di ancoraggio */
@@ -243,22 +232,6 @@ header h2.soggiorno-relax {
     background-color: #9f4023a9;
     /* Cambia il colore di sfondo al passaggio del mouse */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Aggiungi una piccola animazione di movimento della freccia */
-.scroll-to-rooms .arrow {
-    color: #108c9a9a;
-    display: block;
-    font-size: 3vw;
-    /* Dimensione della freccia */
-    position: absolute;
-    top: -9vh;
-    /* La freccia esce sopra il bottone */
-    left: 50%;
-    /* Centra la freccia orizzontalmente */
-    transform: translateX(-50%);
-    animation: bounce 1.5s infinite;
-    /* Animazione che fa rimbalzare la freccia */
 }
 
 
@@ -308,18 +281,6 @@ header h2.soggiorno-relax {
     position: relative;
     z-index: 0;
     scroll-snap-align: start;
-}
-
-.rooms::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 10%;
-    /* Altezza della sfumatura */
-    background: linear-gradient(to top, rgba(173, 216, 230, 0) 0%, rgba(173, 216, 230, 1) 100%);
-    z-index: 1;
 }
 
 .rooms-container {
@@ -481,6 +442,7 @@ header h2.soggiorno-relax {
         height: 100vh;
         scroll-snap-type: y mandatory;
         scroll-behavior: smooth;
+        background-color: #000;
         /* Snap scroll tra le sezioni */
     }
 
@@ -491,7 +453,7 @@ header h2.soggiorno-relax {
 
     header h2.soggiorno-relax {
         font-size: 6vw;
-        margin-bottom: 3vh;
+        margin-bottom: 8vh;
         /* Riduce la dimensione del sottotitolo */
     }
 
@@ -501,17 +463,23 @@ header h2.soggiorno-relax {
         /* Riduce l'altezza della cover */
         padding: 5vw;
         /* Riduce il padding */
+        padding-top: env(safe-area-inset-top);
         box-sizing: border-box;
+        background-size: cover;
+        background-position: center;
+        position: relative;
     }
 
     .cover h2 {
-        font-size: 1.8rem;
-        /* Riduce la dimensione del testo */
+        font-size: 1.8rem;       /* già presente */
+        margin-top: 1rem;        /* aumenta il distacco dal titolo */
+        margin-bottom: 1.5rem;   /* lascia un po’ di spazio sotto la descrizione */
+    
     }
 
     .contact {
         position: absolute;
-        top: 73%;
+        top: 71%;
         /* Adatta meglio la posizione */
         left: 53%;
         transform: translate(-50%, -50%);
@@ -526,36 +494,28 @@ header h2.soggiorno-relax {
     }
 
     .contact-info a {
-        font-size: 5vw;
-        display: block;
-        margin-top: 1vh;
-        margin-bottom: 4vw;
-        color: #036d85;
-        /* Aumenta la dimensione del link */
+        font-size: 4vw;          /* dimensione testo proporzionata */
+        padding: 1vw 3vw;        /* bottone più sottile e stretto */
+        display: inline-block;    /* non full-width */
+        margin-bottom: 2vw;      /* distanza tra i bottoni */
+        text-align: center;
     }
 
     .map {
         position: absolute;
-        top: 95%;
-        right: 5%;
-        width: 25vw;
-        /* Allarga ulteriormente la mappa */
-        height: 10vh;
-        /* Aumenta l'altezza della mappa */
+        top: 87%;         /* più in basso ma visibile */
+        right: 3%;        /* margine destro consistente */
+        width: 30vw;      /* dimensione maggiore rispetto a prima */
+        height: 15vh;     /* altezza aumentata */
+        overflow: hidden;
     }
 
-    .address {
-        position: absolute;
-        top: 60%;
-        right: 10%;
-        /* Centra orizzontalmente */
-        font-size: 3vw;
-        /* Riduce la dimensione del testo dell'indirizzo */
-        margin-top: 2vw;
-        /* Spaziatura sopra l'indirizzo */
-        color: #fff;
-        /* Imposta il colore del testo dell'indirizzo */
+    .map iframe {
+        width: 100%;
+        height: 100%;
     }
+
+
 
     .scroll-to-rooms {
         position: absolute;

@@ -1,0 +1,38 @@
+{
+  "terra": {
+    "title": "Camera Terra - Dettagli",
+    "name": "Camera Terra",
+    "background_image": "images/wallpaper/terra.jpg",
+    "main_images": [
+      "images/appartam1/5EF95467-D836-4317-94B7-0C44D43FAF48_1_105_c.jpeg",
+      "images/appartam1/3DED0D41-F67B-4E9C-A896-FE994A767CCA_1_105_c.jpeg",
+      "images/appartam1/47646B37-8D8A-4C1B-9319-1065792E854E_1_105_c.jpeg",
+      "images/appartam1/DB59E97E-04B5-4016-A7C0-EE60FFA985EB_1_105_c.jpeg",
+      "images/appartam1/B60E2CA7-E1F9-40CD-80A1-0616CFBADA3E_1_105_c.jpeg"
+    ],
+    "comforts": [
+      "Aria condizionata",
+      "Parcheggio privato"
+    ]
+  },
+  "aria": {
+    "title": "Camera Aria - Dettagli",
+    "name": "Camera Aria",
+    "background_image": "images/wallpaper/cielo.jpg",
+    "main_images": [
+      "images/appartm2/1CC63421-0B26-4B0E-A160-19584ADF7DC1_1_105_c.jpeg",
+      "images/appartm2/1D745ECE-293E-46D7-A156-599B7BA73B0D_1_105_c.jpeg",
+      "images/appartm2/4ECECBE1-7EA8-42B3-94BA-DA6CAD0716AA_1_105_c.jpeg",
+      "images/appartm2/4C9C4F43-028E-43A9-888A-77F892553C2B_1_105_c.jpeg",
+      "images/appartm2/240567C8-530F-42B4-AC68-8E47E9EFD913_1_105_c.jpeg",
+      "images/appartm2/658E9D96-ECAE-440B-A412-9CABA362F643_1_105_c.jpeg",
+      "images/appartm2/142C64B5-C8DB-419C-8772-60D167BD0621_1_105_c.jpeg",
+      "images/appartm2/49C41590-4EEA-4BE7-8DD1-8B16F86B7827_1_105_c.jpeg"
+    ],
+    "comforts": [
+      "Aria condizionata",
+      "Parcheggio privato",
+      "Balcone"
+    ]
+  }
+}

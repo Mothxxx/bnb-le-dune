@@ -4,67 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Le Dune Residence</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">   
-    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
+    <link rel="stylesheet" href="static/css/style.css">   
+    <script src="static/js/script.js" defer></script>
+
     <!-- Google tag (gtag.js) -->
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LT0K5MHG56"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LT0K5MHG56');
-</script>
-<meta name="robots" content="index, follow">
-
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LT0K5MHG56"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LT0K5MHG56');
+    </script>
+    <meta name="robots" content="index, follow">
 </head>
 <body>
-    <!-- COVER SECTION (Sfondo e info) -->
-    <section class="cover" style="background-image: url('{{ url_for('static', filename='images/general/c-a.jpg') }}');">
+    <!-- COVER SECTION -->
+    <section class="cover" style="background-image: url('static/images/general/c-a.jpg');">
         <div class="overlay">
             <header>
                 <h1>Le Dune Residence</h1>
                 <h2 class="soggiorno-relax">Soggiorno Relax</h2>
             </header>
-            <h2 style="margin-top: -20px;">Un angolo di paradiso tra le campagne abruzzesi e i fantastici scorci dell'Adriatico</h2>
-            <h2>Il luogo perfetto per il relax e per godersi un soggiorno indimenticabile.</h2>
+            <h2 style="margin-top: -1px; font-size:2.2rem;">Un angolo di paradiso tra le campagne abruzzesi e i fantastici scorci dell'Adriatico</h2>
         </div>
 
         <!-- Contatti -->
         <div class="contact">
             <div class="contact-info">
-                <p>e-mail: <a href="mailto:loritodaniele10@gmail.com">loritodaniele10@gmail.com</a></p>
-                <p> WhatsApp: <a href="https://wa.me/393387123290" target="_blank">Daniele</a></p>
+                <p><a href="mailto:loritodaniele10@gmail.com">Gmail</a></p>
+                <p> <a href="https://wa.me/393387123290" target="_blank">Whatsapp</a></p>
             </div>
             <div class="map">
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10743.864455742414!2d14.333737832507001!3d42.387520923695284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133107122ad1c1f5%3A0x1c9683d15a5e7025!2sResidence%20Le%20Dune!5e1!3m2!1sit!2sit!4v1736771403191!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                 width="100%" height="100%" frameborder="10" style="border:1;" allowfullscreen="" loading="lazy" 
-            </div>
-            <div class="address">
-                <p>Cda Ghiomera 5, 66026, Ortona, CH</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10743.864455742414!2d14.333737832507001!3d42.387520923695284!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133107122ad1c1f5%3A0x1c9683d15a5e7025!2sResidence%20Le%20Dune!5e1!3m2!1sit!2sit!4v1736771403191!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                 
             </div>
         </div>
-        <a href="#rooms" class="scroll-to-rooms">Scopri
-            <span class="arrow">↓</span>
+        <a href="#rooms" class="scroll-to-rooms">Discover
         </a>    
     </section>
 
     <!-- SEZIONE CAMERE -->
-    <section id="rooms" class="rooms" style="background-image: url('{{ url_for('static', filename='images/general/costa1.jpg') }}');">
+    <section id="rooms" class="rooms" style="background-image: url('static/images/general/costa1.jpg');">
         <div class="rooms-container show-on-scroll">
-            <div class="room" onclick="window.location.href='{{url_for ('camere')}}#room-terra'">
+            <div class="room" onclick="window.location.href='/camera/terra'">
                 <div class="image-container">
-                    <img src="{{ url_for('static', filename='images/general/fuori.jpg') }}" alt="Terra">
+                    <img src="static/images/general/fuori.jpg" alt="Terra">
                 </div>
                 <div class="room-info">
                     <h3>Residence Terra</h3>
                 </div>
             </div>
-            <div class="room" onclick="window.location.href='{{url_for('camere')}}#room-aria'">
+            <div class="room" onclick="window.location.href='/camera/aria'">
                 <div class="image-container">
-                    <img src="{{ url_for('static', filename='images/general/45A14D27-1E71-4DF3-A5B7-B2AB660DFCC9_1_105_c.jpeg') }}" alt="Aria">
+                    <img src="static/images/general/45A14D27-1E71-4DF3-A5B7-B2AB660DFCC9_1_105_c.jpeg" alt="Aria">
                 </div>
                 <div class="room-info">
                     <h3>Residence Cielo</h3>
@@ -73,13 +64,8 @@
         </div>
         
         <footer id="fixed-footer">
-
-                <p>&copy; 2025 Residence Le Dune. <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a></p>
-                
-       </footer>
+            <p>&copy; 2025 Residence Le Dune. <a href="/privacy">Privacy Policy</a></p>
+        </footer>
     </section>
-
-    <!-- FOOTER -->
 </body>
 </html>
-
