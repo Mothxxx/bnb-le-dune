@@ -8,12 +8,12 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   
-  <!-- Slick Carousel CSS - IMPORTANTE! -->
+  <!-- Slick Carousel CSS -->
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   
-  <!-- Lightbox CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <!-- GLightbox CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/css/glightbox.min.css">
 </head>
 <body>
 
@@ -41,8 +41,11 @@
         {% for img in camera.main_images %}
         <div class="slide">
           <div class="img-container">
-            <a href="{{ img }}" data-lightbox="gallery">
+            <a href="{{ img }}" class="glightbox" data-gallery="room-gallery">
               <img class="img-fluid" src="{{ img }}" alt="Immagine principale">
+              <div class="zoom-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
             </a>
           </div>
         </div>
@@ -67,52 +70,73 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Slick Carousel JS -->
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<!-- Lightbox JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<!-- GLightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.2.0/js/glightbox.min.js"></script>
 
 <script>
 $(document).ready(function(){
+  
+  // 🚀 GLightbox - Configurazione semplificata e funzionante
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: false,
+    zoomable: true,
+    draggable: true,
+    width: '90vw',
+    height: '80vh'
+  });
+
   // Carosello principale (SENZA frecce)
   $('#sliderSyncingNav').slick({
     infinite: true,
-    arrows: false, // Rimosse le frecce
+    arrows: false,
     fade: true,
     asNavFor: '#sliderSyncingThumb',
-    adaptiveHeight: true
+    adaptiveHeight: true,
+    speed: 300,
+    cssEase: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
   });
 
   // Carosello miniature verticali
   $('#sliderSyncingThumb').slick({
     infinite: true,
-    slidesToShow: 4, // Mostra 4 miniature alla volta in verticale
+    slidesToShow: 4,
     slidesToScroll: 1,
     asNavFor: '#sliderSyncingNav',
     focusOnSelect: true,
-    vertical: true, // IMPORTANTE: layout verticale
+    vertical: true,
     verticalSwiping: true,
-    arrows: false, // Rimosse le frecce
+    arrows: false,
     centerMode: true,
     centerPadding: '10px',
+    speed: 300,
+    cssEase: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
     responsive: [
-      { 
-        breakpoint: 768, 
-        settings: { 
+      {
+        breakpoint: 768,
+        settings: {
           vertical: false,
           slidesToShow: 3,
           centerMode: true,
           centerPadding: '20px'
-        } 
+        }
       },
-      { 
-        breakpoint: 554, 
-        settings: { 
+      {
+        breakpoint: 554,
+        settings: {
           vertical: false,
           slidesToShow: 2,
           centerMode: false
-        } 
+        }
       }
     ]
   });
+
+  // Debug per verificare che GLightbox sia inizializzato
+  console.log('GLightbox inizializzato:', lightbox);
+
 });
 
 function confirmBack() {
@@ -122,16 +146,16 @@ function confirmBack() {
 </script>
 
 <style>
-    html, body {
+html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* blocca scroll verticale e orizzontale */
+    overflow: hidden;
 }
+
 body {
-    /* Sfondo dinamico per ogni camera */
     background: url('{{ camera.background_image }}') no-repeat center center fixed;
-    background-size: 120%; /* Zoom aumentato del 20% */
+    background-size: 120%;
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -139,12 +163,6 @@ body {
 }
 
 /* Overlay per blur, opacità e luminosità */
-body {
-  background: url('{{ camera.background_image }}') no-repeat center center fixed;
-  background-size: cover; /* adatta sempre */
-}
-
-/* Overlay */
 body::before {
   content: '';
   position: fixed;
@@ -167,7 +185,34 @@ body::before {
     gap: 20px;
     align-items: stretch;
     justify-content: center;
-    flex-wrap: wrap; /* permette alle colonne di andare sotto se lo spazio non basta */
+    flex-wrap: wrap;
+    overflow-y: auto;
+}
+
+/* Custom zoom overlay effect */
+.zoom-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 20px;
+}
+
+.zoom-overlay i {
+    color: #fff;
+    font-size: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.img-container:hover .zoom-overlay {
+    opacity: 1;
 }
 
 /* Sidebar sinistra per le miniature */
@@ -176,7 +221,7 @@ body::before {
     width: 180px;
     display: flex;
     justify-content: center;
-    align-items: center; /* centra verticalmente */
+    align-items: center;
     margin-left: 2.5rem;
 }
 
@@ -198,10 +243,11 @@ body::before {
     object-fit: cover;
     border-radius: 10px;
     border: 3px solid transparent;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     display: block;
     margin: auto;
+    cursor: pointer;
 }
 
 .thumb-carousel-vertical .slick-slide.slick-current img,
@@ -212,8 +258,9 @@ body::before {
 }
 
 .thumb-carousel-vertical .slick-slide img:hover {
-    transform: scale(1.05);
-    border-color: rgba(255,255,255,0.7);
+    transform: scale(1.08);
+    border-color: rgba(255,255,255,0.8);
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.4);
 }
 
 /* Area immagine principale centrale */
@@ -225,12 +272,7 @@ body::before {
   min-width: 300px;
   box-sizing: border-box;
   padding: 10px;
-  margin: 0 auto;          /* centrata di default */
-}
-
-.main-carousel {
-    width: 100%;
-    max-width: 600px;
+  margin: 0 auto;
 }
 
 .main-carousel {
@@ -240,23 +282,30 @@ body::before {
 
 .main-carousel .img-container {
     width: 100%;
-    aspect-ratio: 4 / 3; /* mantiene proporzione costante del box */
+    aspect-ratio: 4 / 3;
     border-radius: 20px;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgba(0,0,0,0.1); /* sfondo per far risaltare bordi quando la foto è corta */
-    flex-shrink: 0; /* impedisce che il box venga schiacciato */
+    background: rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.main-carousel .img-container:hover {
+    transform: scale(1.02);
 }
 
 .main-carousel .img-fluid {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* mantiene proporzioni, ritaglia se necessario */
+    object-fit: cover;
     border-radius: 20px;
+    transition: all 0.3s ease;
 }
-
 
 /* Comfort colonna destra */
 .room-comforts {
@@ -265,9 +314,9 @@ body::before {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    min-width: 200px; /* impedisce che diventi troppo stretto */
+    min-width: 200px;
     box-sizing: border-box;
-    padding: 0 10px; /* margini interni */
+    padding: 0 10px;
     margin-right: 1.5rem;
 }
 
@@ -303,6 +352,12 @@ body::before {
     width: auto;
     max-width: 100%;
     box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.room-comforts li:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateX(3px);
 }
 
 .back-link {
@@ -315,18 +370,56 @@ body::before {
     justify-content: center;
     width: 2.5rem;
     height: 2.5rem;
-    background: rgba(255, 255, 255, 0.15); /* opaco delicato */
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(5px);
     border-radius: 50%;
     text-decoration: none;
     color: #fff;
     font-size: 1.2rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 .back-link:hover {
     background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* GLightbox custom styling */
+.glightbox-clean .gslide-media {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.glightbox-clean .gnext,
+.glightbox-clean .gprev {
+    background: rgba(255, 255, 255, 0.9);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.glightbox-clean .gnext:hover,
+.glightbox-clean .gprev:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.glightbox-clean .gclose {
+    background: rgba(255, 255, 255, 0.9);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.glightbox-clean .gclose:hover {
+    background: rgba(255, 255, 255, 1);
     transform: scale(1.1);
 }
 
@@ -339,30 +432,31 @@ body::before {
 
 @media (max-width: 992px) {
     body {
-        background-attachment: scroll; /* evita “fixed” su mobile */
+        background-attachment: scroll;
         background-size: cover;
     }
 
     body::before {
-        position: absolute; /* non fixed su mobile */
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        transform: none; /* togli scale extra */
+        transform: none;
     }
+    
     .thumb-carousel-vertical,
     .thumbnails-sidebar {
-        display: none; /* nasconde sidebar/carousel già a 992px */
+        display: none;
     }
 
     .gallery-container { gap: 15px; }
     .room-comforts li { padding: 5px 10px; font-size: 1rem; }
     .main-image-area {
         flex: 1 1 auto;
-        width: 90%;           /* non prende tutto lo schermo */
+        width: 90%;
         max-width: 600px;
-        padding: 0 5vw;       /* padding proporzionale ai lati */
+        padding: 0 5vw;
         margin: 0 auto;
         justify-content: center;
     }
@@ -372,11 +466,11 @@ body::before {
         max-width: 100%;
     }
 
-  .main-carousel .img-container {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 16px;
-  }
+    .main-carousel .img-container {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 16px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -391,8 +485,9 @@ body::before {
         width: 100%;
         height: 100%;
         transform: none;
-        filter: blur(6px) brightness(0.3); /* blur più leggero per performance */
+        filter: blur(6px) brightness(0.3);
     }
+    
     .back-link {
         top: 0.8rem;
         left: 0.8rem;
@@ -402,70 +497,58 @@ body::before {
     }
 
     .gallery-container {
-        flex-direction: column; /* le colonne vanno sotto */
-        align-items: center;    /* centra orizzontalmente */
-        justify-content: flex-start; /* evita centratura verticale */
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
         margin-top: 60px;
         gap: 20px;
-        min-height: auto; /* togli calc(100vh - 60px) per permettere scroll */
-    }
-     .main-image-area {
-        width: 90%;           /* 90% viewport */
-        max-width: 500px;     /* non cresce oltre */
-        padding: 0 5vw;
-        margin: 0 auto;
-        justify-content: center;
-    }
-
-    .main-carousel {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .thumbnails-sidebar, .room-comforts {
-        width: 100%;
-        max-width: 50%;
-    }
-    
-    .thumb-carousel-vertical {
-        display: none; /* sparisce su mobile */
+        min-height: auto;
     }
     
     .main-image-area {
         width: 90%;
-        max-width: 500px;
-        margin: 30px auto 20px auto; /* margine superiore aumenta, spinge l'immagine verso il centro */
+        max-width: 400px; /* Ridotto per mobile */
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
-        align-items: center;      /* centra contenuto interno orizzontalmente */
-        justify-content: center;  /* centra contenuto interno verticalmente */
+        align-items: center;
+        justify-content: center;
+        flex: 1; /* Prende spazio disponibile */
     }
 
     .room-comforts {
         width: 90%;
-        max-width: 500px;
-        margin: 0 auto;           /* Comfort resta al suo posto */
+        max-width: 400px; /* Ridotto per mobile */
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
-        align-items: center;      /* centra testo orizzontalmente */
-        justify-content: flex-start; /* mantiene la lista Comfort in alto rispetto all'immagine */
+        align-items: center;
+        justify-content: flex-start;
+        flex-shrink: 0; /* Non si restringe */
     }
+
     .main-carousel .img-container {
         width: 100%;
-        height: auto;        
-        max-height: 50vh;
-        border-radius: 16px;
+        aspect-ratio: 4 / 3;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0,0,0,0.1);
+        flex-shrink: 0;
     }
 
     .main-carousel .img-fluid {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 20px;
     }
     
     .room-comforts h3 {
         font-size: 1.8rem;
-        text-align: center;    /* centra titolo */
+        text-align: center;
     }
 
     .room-comforts ul {
@@ -477,11 +560,26 @@ body::before {
     .room-comforts li {
         font-size: 1rem;
         padding: 5px 8px;
-        text-align: center;    /* centra testo */
+        text-align: center;
         max-width: 100%;
         margin: 0 auto 10px auto;
     }
 
+    /* Mobile GLightbox adjustments */
+    .glightbox-clean .gnext,
+    .glightbox-clean .gprev {
+        width: 40px;
+        height: 40px;
+    }
+
+    .glightbox-clean .gclose {
+        width: 35px;
+        height: 35px;
+    }
+
+    .zoom-overlay i {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -492,7 +590,24 @@ body::before {
         height: 1.8rem;
         font-size: 0.9rem;
     }
+
+    .glightbox-clean .gnext,
+    .glightbox-clean .gprev {
+        width: 35px;
+        height: 35px;
+    }
+
+    .glightbox-clean .gclose {
+        width: 30px;
+        height: 30px;
+    }
+
+    .zoom-overlay i {
+        font-size: 1.2rem;
+    }
 }
+
+/* Assicuriamoci che GLightbox abbia il giusto z-index */
 
 </style>
 
